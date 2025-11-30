@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma's Creative Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Header / Navigation -->
+    <header>
+    <div class="logo-container">
+        <img src="images/logo.png" alt="Emma Logo" class="logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="portfolio.html">Portfolio</a>
+                <ul class="dropdown-content">
+                    <li><a href="graphicdesign.html">Graphic Design</a></li>
+                    <li><a href="photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="studio.html">Studio</a>
+                <ul class="dropdown-content">
+                    <li><a href="sketchbook.html">Sketchbook</a></li>
+                    <li><a href="craftroom.html">Craft Room</a></li>
+                    <li><a href="theatre.html">Home Theatre</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- Hero / Intro -->
+<section class="intro">
+    <h2>Welcome to My Creative Hub</h2>
+    <p>A professional portfolio and personal studio showcasing design, photography, sketches, videos, and more.</p>
+</section>
+
+<!-- Portfolio or Studio -->
+<section class="cards-section">
+    <div class="cards">
+        <div class="card" style="--bg:url('images/Kora logo bg 2.png')">
+            <h2>Portfolio</h2>
+            <p>Graphic Design, photography, and other freelance projects.</p>
+            <a href="portfolio.html" class="more-btn">More</a>
+        </div>
+        <div class="card" style="--bg:url('images/photography.jpg')">
+            <h2>Studio</h2>
+            <p>My sketches, paintings, crafts, ceramics, vlogs, blogs, and more.</p>
+            <a href="studio.html" class="more-btn">More</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Me Preview -->
+<section class="about-preview">
+    <div class="about-preview-container">
+        <div class="about-preview-image">
+            <img src="images/self.JPG" alt="Portrait of Emma">
+        </div>
+        <div class="about-preview-text">
+            <h2>About Me</h2>
+            <p>
+                I'm a multidisciplinary artist and designer exploring creativity through photography, graphic design, ceramics, and wearable art. 
+                My work merges digital precision with handcrafted storytelling — creating visuals that feel both personal and intentional.
+            </p>
+            <a href="about.html" class="about-btn">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Section -->
+<section class="cards-section featured-projects">
+    <h2>Featured</h2>
+    <div class="cards feautured-cards">
+        <div class="card featured" data-id="f1">
+                 <img src="images/boat couple.jpg" alt="Man holding woman on boat">
+            <h3>'Held in Quiet' 2023</h3>
+            <p>A fleeting moment of tenderness captured on the river.</p>
+            <a href="photography.html" class="more-btn">More Photography</a>
+        </div>
+         <div class="card featured" data-id="f2">
+                 <img src="images/babynut.jpg" alt="Painting of a cat sleeping under blankets">
+            <h3>'Freeloader' 2025</h3>
+            <p>A small acrylic painting portraying a cat sleeping from beneath rumpled blankets.</p>
+            <a href="sketchbook.html" class="more-btn">More from my Sketchbook</a>
+        </div>
+         <div class="card featured" data-id="f3">
+                 <img src="images/Bluebell&Bow_oval_final.png" alt="Logo with bluebell flowers tied in a bow">
+            <h3>Bluebell & Bow Logo</h3>
+            <p>Logo Design and creation for a small sewing business.</p>
+            <a href="graphicdesign.html" class="more-btn">More Graphic Design</a>
+        </div>
+         <div class="card featured" data-id="f4">
+                 <img src="images/pbj-bears.jpg" alt="Peanut Butter Jelly bears">
+            <h3>PBJ Bears</h3>
+            <p>A food art piece featuring peanut butter bears and jelly squares arranged on toast.</p>
+            <a href="craftroom.html" class="more-btn">More from my Craft Room</a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="featuredModal" class="modal">
+    <span class="close" id="closeFeatured">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+    </div>
+</div>
+
+<!------------------------------------------------------- Footer ------------------------------------------------------------->
+<footer> 
+    <p>&copy; 2025 Emma | All rights reserved</p>
+    <p>
+    Follow me on 
+    <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
+    <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
+    <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
+    </p>
+
+    <p>
+    To get in touch:
+    <a href="https://www.instagram.com/emmjoelle/" target="_blank">DM</a> |
+    <a href="mailto:contact@emmjoelle.com">Email</a> |
+    <a href="contact.html">Contact form</a>
+    </p>
+</footer>
+
+<script src="js/script.js" defer></script>
+
+<!-- Global Modal -->
+<div id="modal" class="modal" aria-hidden="true">
+  <div id="modalContent"></div>
+  <span id="modalClose" class="close">&times;</span>
+</div>
+
+</body>
+</html>
