@@ -1,3 +1,22 @@
+/* Hide the skip link by default */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #00203D;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100; /* keep it on top of other elements */
+  border-radius: 4px;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+/* Make it visible for keyboard users */
+.skip-link:focus {
+  top: 10px; /* slide down into view */
+}
+
 * {
     margin: 0;
     padding: 0;
