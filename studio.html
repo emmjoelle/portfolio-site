@@ -3,93 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emma's Creative Studio</title>
+<title>Studio | emmjoelle</title>
+<meta name="description" content="The creative studio of Emma Goodman - a space for sketches, handmade crafts, ceramics, wearable art, and other personal projects.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- Skip link for keyboard users -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Header / Navigation -->
-    <header>
-    <div class="logo-container">
-        <img src="images/logo.png" alt="Emma Logo" class="logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="portfolio.html">Portfolio</a>
-                <ul class="dropdown-content">
-                    <li><a href="graphicdesign.html">Graphic Design</a></li>
-                    <li><a href="photography.html">Photography</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="studio.html">Studio</a>
-                <ul class="dropdown-content">
-                    <li><a href="sketchbook.html">Sketchbook</a></li>
-                    <li><a href="craftroom.html">Craft Room</a></li>
-                    <li><a href="theatre.html">Home Theatre</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="images/logo.png" alt="Emma Logo" class="logo">
+  </div>
+  <nav class="main-nav" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="portfolio.html">Portfolio</a>
+        <ul class="dropdown-content">
+          <li><a href="graphicdesign.html">Graphic Design</a></li>
+          <li><a href="photography.html">Photography</a></li>
         </ul>
-    </nav>
+      </li>
+      <li class="dropdown">
+        <a href="studio.html" aria-current="page">Studio</a>
+        <ul class="dropdown-content">
+          <li><a href="sketchbook.html">Sketchbook</a></li>
+          <li><a href="craftroom.html">Craft Room</a></li>
+          <li><a href="theatre.html">Home Theatre</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
+<!-- Main content -->
+<main id="main-content" aria-label="Page content">
 
-<!-- Hero / Intro -->
-<section class="intro">
-    <h2>Personal Studio</h2>
-    <p>Sketches, paintings, ceramics, wearable art, vlogs, blogs, and more!</p>
-</section>
+  <!-- Hero / Intro -->
+  <section class="intro">
+    <h1>Personal Studio</h1>
+    <p>Sketches, paintings, ceramics, wearable art, vlogs, blogs, and more — creative spaces where ideas come to life.</p>
+  </section>
 
-<!-- Personal Studio Section -->
-<section class="cards-section">
+  <!-- Personal Studio Section -->
+  <section class="cards-section">
+    <h2>Explore My Studio Spaces</h2>
     <div class="cards">
-        <div class="card" style="--bg:url('images/fruit.JPEG')">
-            <h2>Sketchbook</h2>
-            <p>Illustrations, paintings, and sketches — digital and traditional.</p>
-            <a href="sketchbook.html" class="more-btn">More</a>
-        </div>
-        <div class="card" style="--bg:url('images/embroidery-socks.jpeg')">
-            <h2>Craft Room</h2>
-            <p>Ceramics, embroidery, wearable art, and other tangible creations.</p>
-            <a href="craftroom.html" class="more-btn">More</a>
-        </div>
-        <div class="card" style="--bg:url('images/vlog.jpg')">
-            <h2>Home Theatre</h2>
-            <p>Videos, vlogs, and process timelapses of creative work.</p>
-            <a href="theatre.html" class="more-btn">More</a>
-        </div>
-        <div class="card" style="--bg:url('images/words.JPG')">
-            <h2>Blog</h2>
-            <p>Book reviews, essays, and more random thoughts I'd like to share.</p>
-            <a href="blog.html" class="more-btn">More</a>
-        </div>
+      <article class="card" style="--bg:url('images/fruit.JPEG')">
+        <h3>Sketchbook</h3>
+        <p>Illustrations, paintings, and sketches — both digital and traditional explorations of form and color.</p>
+        <a href="sketchbook.html" class="more-btn">View Sketchbook Projects</a>
+      </article>
+
+      <article class="card" style="--bg:url('images/embroidery-socks.jpeg')">
+        <h3>Craft Room</h3>
+        <p>Ceramics, embroidery, wearable art, and other handcrafted works made with care.</p>
+        <a href="craftroom.html" class="more-btn">View Craft Room Projects</a>
+      </article>
+
+      <article class="card" style="--bg:url('images/vlog.jpg')">
+        <h3>Home Theatre</h3>
+        <p>Videos, vlogs, and creative process timelapses — capturing art in motion.</p>
+        <a href="theatre.html" class="more-btn">View Videos</a>
+      </article>
+
+      <article class="card" style="--bg:url('images/words.JPG')">
+        <h3>Blog</h3>
+        <p>Book reviews, essays, and written reflections on creativity and inspiration.</p>
+        <a href="blog.html" class="more-btn">Read the Blog</a>
+      </article>
     </div>
-</section>
+  </section>
+
+</main>
 
 <!-- Footer -->
-<footer> 
-    <p>&copy; 2025 Emma | All rights reserved</p>
-    <p>
+<footer class="site-footer" aria-label="Footer">
+  <p>&copy; 2025 Emma | All rights reserved</p>
+  <p>
     Follow me on 
     <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
     <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
     <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
-    </p>
-
-    <p>
+  </p>
+  <p>
     To get in touch:
     <a href="https://www.instagram.com/emmjoelle/" target="_blank">DM</a> |
     <a href="mailto:contact@emmjoelle.com">Email</a> |
     <a href="contact.html">Contact form</a>
-    </p>
+  </p>
 </footer>
 
+<!-- Global Modal -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+  <div id="modalContent"></div>
+</div>
+
 <script src="js/script.js" defer></script>
+
 </body>
 </html>

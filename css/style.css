@@ -619,73 +619,84 @@ section.visible {
     color: #00203D;
 }
 
-/* ----------   FEATURED PROJECTS (special card style) ----------- */
+/* ---------- FEATURED PROJECTS (2x2 grid, no blur overlay) ---------- */
+/* ---------- Featured Projects 2x2 layout (clean alignment) ---------- */
 .featured-cards {
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  max-width: 950px;
+  margin: 0 auto;
 }
 
 .card.featured {
-    max-width: 500px;
-    aspect-ratio: auto; /* removes square shape */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background: #fff;
-    border: 2px solid #c0c8d4;
-    border-radius: 12px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  border: 2px solid #c0c8d4;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* remove the blurred overlay from normal cards */
-.card.featured::before {
-    display: none;
+.card.featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Image */
+/* Image container for consistent height */
 .card.featured img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
-    cursor: pointer; /* indicates image is clickable */
+  width: 100%;
+  height: 200px; /* fixed visual balance for all images */
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* Text under image */
+.card.featured:hover img {
+  transform: scale(1.03);
+}
+
+/* Text and button */
 .card.featured h3 {
-    font-size: 1.5rem;
-    color: #00203D;
-    margin: 20px 20px 10px 20px;
-    font-weight: 600;
+  font-size: 1.3rem;
+  color: #00203D;
+  font-weight: 600;
+  margin: 15px 20px 8px 20px;
 }
 
 .card.featured p {
-    font-size: 1rem;
-    color: #333;
-    margin: 0 20px 20px 20px;
-    line-height: 1.5;
+  font-size: 1rem;
+  color: #333;
+  margin: 0 20px 15px 20px;
+  line-height: 1.5;
 }
 
-/* Button */
 .card.featured .more-btn {
-    display: inline-block;
-    align-self: center;
-    background: #00203D;
-    color: #b6dbf1;
-    border-radius: 8px;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.3s, color 0.3s;
+  align-self: center;
+  margin: 0 0 20px 0;
+  padding: 10px 24px;
+  background: #00203D;
+  color: #b6dbf1;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
 }
 
 .card.featured .more-btn:hover {
-    background: #b6dbf1;
-    color: #00203D;
+  background: #b6dbf1;
+  color: #00203D;
+}
+
+/* Remove blur overlay for featured cards */
+.card.featured::before {
+  content: none;
+  display: none;
 }
 
 /* Hover effect */
@@ -808,6 +819,114 @@ footer a:hover {
     color: #dfb952;
 }
 
+/* ===========================================================
+   GLOBAL MODAL STYLES — applies to all modals sitewide
+   =========================================================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 40px 20px;
+}
+
+.modal.open {
+  display: box;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.modal-content,
+#modalContent,
+.modal-body {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #00203D;
+}
+
+.modal .excerpt {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.modal .description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.close,
+#modalClose {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close:focus,
+#modalClose:focus {
+  outline: 3px solid #00203D;
+  outline-offset: 3px;
+}
+
+/* Smooth fade-in */
+.modal.open {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* =============== FIX FEATURED IMAGE CLICK AREA =============== */
+.featured-trigger {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+.featured-trigger:focus {
+  outline: 3px solid #00203D;
+  outline-offset: 4px;
+}
+
+.featured-trigger:focus,
+.gallery-item:focus {
+  outline: 3px solid #00203D;
+  outline-offset: 4px;
+}
 
 /*--------------- Responsive Layout ----------------*/
 @media (max-width: 768px) {

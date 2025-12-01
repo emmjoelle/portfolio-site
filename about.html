@@ -3,92 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | Emma's Creative Studio</title>
+<title>About | emmjoelle</title>
+<meta name="description" content="Learn more about artist and designer Emma Goodman - her background and approach to multidisciplinary creation.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
+<!-- Skip link for keyboard users -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Header / Navigation -->
-    <header>
-    <div class="logo-container">
-        <img src="images/logo.png" alt="Emma Logo" class="logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="portfolio.html">Portfolio</a>
-                <ul class="dropdown-content">
-                    <li><a href="graphicdesign.html">Graphic Design</a></li>
-                    <li><a href="photography.html">Photography</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="studio.html">Studio</a>
-                <ul class="dropdown-content">
-                    <li><a href="sketchbook.html">Sketchbook</a></li>
-                    <li><a href="craftroom.html">Craft Room</a></li>
-                    <li><a href="theatre.html">Home Theatre</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="images/logo.png" alt="Emma Logo" class="logo">
+  </div>
+  <nav class="main-nav" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="portfolio.html">Portfolio</a>
+        <ul class="dropdown-content">
+          <li><a href="graphicdesign.html">Graphic Design</a></li>
+          <li><a href="photography.html">Photography</a></li>
         </ul>
-    </nav>
+      </li>
+      <li class="dropdown">
+        <a href="studio.html">Studio</a>
+        <ul class="dropdown-content">
+          <li><a href="sketchbook.html">Sketchbook</a></li>
+          <li><a href="craftroom.html">Craft Room</a></li>
+          <li><a href="theatre.html">Home Theatre</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
+<!-- Main content -->
+<main id="main-content" aria-label="Page content">
 
-<!-- Hero / Intro -->
-<section class="intro">
-    <h2>About emmjoelle</h2>
+  <!-- Hero / Intro -->
+  <section class="intro">
+    <h1>About emmjoelle</h1>
     <p>Artist • Designer • Storyteller</p>
-</section>
+  </section>
 
-<!-- Bio -->
-<section class="about-content">
+  <!-- Bio -->
+  <section class="about-content">
     <div class="about-image">
-        <img src="images/self.JPG" alt="Portrait of Emma">
+      <img src="images/self.JPG" alt="Portrait of Emma smiling in her studio space">
     </div>
     <div class="about-text">
-        <h2>Hello! I'm Emma 👋</h2>
-        <p>
-            I’m a multidisciplinary artist and designer passionate about visual storytelling — from photography and branding to ceramics, embroidery, and wearable art.
-        </p>
-        <p>
-             My work explores the relationship between creativity and identity, combining digital and tangible mediums to express emotion, texture, and narrative.
-        </p>
-        <p>
-            I love building things that make people pause, smile, or see something differently — whether that’s through a logo, a handmade object, or a photograph.
-        </p>
+      <h2>Hello! I'm Emma 👋</h2>
+      <p>
+        I’m a multidisciplinary artist and designer passionate about visual storytelling — from photography and branding to ceramics, embroidery, and wearable art.
+      </p>
+      <p>
+        My work explores the relationship between creativity and identity, combining digital and tangible mediums to express emotion, texture, and narrative.
+      </p>
+      <p>
+        I love building things that make people pause, smile, or see something differently — whether that’s through a logo, a handmade object, or a photograph.
+      </p>
     </div>
-</section>
+  </section>
 
-<!-- Skills / Focus -->
-<section class="skills">
+  <!-- Skills / Focus -->
+  <section class="skills">
     <h2>Creative Focus</h2>
     <div class="skills-grid">
-        <div class="skill-card">Graphic Design</div>
-        <div class="skill-card">Photography</div>
-        <div class="skill-card">Embroidery & Wearable Art</div>
-        <div class="skill-card">Ceramics</div>
-        <div class="skill-card">Illustration</div>
-        <div class="skill-card">Branding & Visual Identity</div>
+      <div class="skill-card">Graphic Design</div>
+      <div class="skill-card">Photography</div>
+      <div class="skill-card">Embroidery & Wearable Art</div>
+      <div class="skill-card">Ceramics</div>
+      <div class="skill-card">Illustration</div>
+      <div class="skill-card">Branding & Visual Identity</div>
     </div>
-</section>
+  </section>
+
+</main>
 
 <!-- Footer -->
-<footer>
-    <p>&copy; 2025 Emma | All rights reserved</p>
-    <p>
-        Follow me on 
-        <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
-        <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
-        <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
-    </p>
+<footer class="site-footer" aria-label="Footer">
+  <p>&copy; 2025 Emma | All rights reserved</p>
+  <p>
+    Follow me on 
+    <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
+    <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
+    <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
+  </p>
 </footer>
+
+<!-- Global Modal -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+  <div id="modalContent"></div>
+</div>
 
 <script src="js/script.js" defer></script>
 </body>

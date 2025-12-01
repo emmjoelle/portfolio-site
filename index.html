@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emma's Creative Studio</title>
+<title>emmjoelle | Emma's Creative Hub</title>
+<meta name="description" content="Portfolio of Emma Goodman (emmjoelle), a multidisciplinary artist and designer exploring creativity through photography, illustration, graphic design, and fine art.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- Skip link for keyboard users -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Header / Navigation -->
-    <header>
+<header class="site-header">
     <div class="logo-container">
         <img src="images/logo.png" alt="Emma Logo" class="logo">
     </div>
-    <nav>
+    <nav class="main-nav" aria-label="Main navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li class="dropdown">
@@ -39,112 +43,152 @@
     </nav>
 </header>
 
+<!-- Main content -->
+<main id="main-content" aria-label="Page content">
 
-<!-- Hero / Intro -->
-<section class="intro">
-    <h2>Welcome to My Creative Hub</h2>
-    <p>A professional portfolio and personal studio showcasing design, photography, sketches, videos, and more.</p>
-</section>
+    <!-- Hero / Intro -->
+    <section class="intro">
+        <h1>Welcome to My Creative Hub</h1>
+        <p>A professional portfolio and personal studio showcasing design, photography, sketches, videos, and more.</p>
+    </section>
 
-<!-- Portfolio or Studio -->
+    <!-- Portfolio or Studio -->
 <section class="cards-section">
-    <div class="cards">
-        <div class="card" style="--bg:url('images/Kora logo bg 2.png')">
-            <h2>Portfolio</h2>
-            <p>Graphic Design, photography, and other freelance projects.</p>
-            <a href="portfolio.html" class="more-btn">More</a>
-        </div>
-        <div class="card" style="--bg:url('images/photography.jpg')">
-            <h2>Studio</h2>
-            <p>My sketches, paintings, crafts, ceramics, vlogs, blogs, and more.</p>
-            <a href="studio.html" class="more-btn">More</a>
-        </div>
-    </div>
+  <h2>Explore My Work</h2>
+  <div class="cards">
+    <article class="card" style="--bg:url('images/Kora logo bg 2.png')">
+      <h3>Portfolio</h3>
+      <p>Graphic design, photography, and other freelance projects showcasing my professional work.</p>
+      <a href="portfolio.html" class="more-btn">Visit my Portfolio</a>
+    </article>
+
+    <article class="card" style="--bg:url('images/photography.jpg')">
+      <h3>Studio</h3>
+      <p>My personal studio — sketches, paintings, crafts, ceramics, vlogs, blogs, and more.</p>
+      <a href="studio.html" class="more-btn">Visit My Studio</a>
+    </article>
+  </div>
 </section>
 
-<!-- About Me Preview -->
-<section class="about-preview">
-    <div class="about-preview-container">
-        <div class="about-preview-image">
-            <img src="images/self.JPG" alt="Portrait of Emma">
+    <!-- About Me Preview -->
+    <section class="about-preview">
+        <div class="about-preview-container">
+            <div class="about-preview-image">
+                <img src="images/self.JPG" alt="Portrait of Emma" loading="lazy">
+            </div>
+            <div class="about-preview-text">
+                <h2>About Me</h2>
+                <p>
+                    I'm a multidisciplinary artist and designer exploring creativity through photography, graphic design, ceramics, and wearable art. 
+                    My work merges digital precision with handcrafted storytelling — creating visuals that feel both personal and intentional.
+                </p>
+                <a href="about.html" class="about-btn">Learn More</a>
+            </div>
         </div>
-        <div class="about-preview-text">
-            <h2>About Me</h2>
-            <p>
-                I'm a multidisciplinary artist and designer exploring creativity through photography, graphic design, ceramics, and wearable art. 
-                My work merges digital precision with handcrafted storytelling — creating visuals that feel both personal and intentional.
-            </p>
-            <a href="about.html" class="about-btn">Learn More</a>
-        </div>
-    </div>
-</section>
+    </section>
 
 <!-- Featured Section -->
 <section class="cards-section featured-projects">
-    <h2>Featured</h2>
-    <div class="cards feautured-cards">
-        <div class="card featured" data-id="f1">
-                 <img src="images/boat couple.jpg" alt="Man holding woman on boat">
-            <h3>'Held in Quiet' 2023</h3>
-            <p>A fleeting moment of tenderness captured on the river.</p>
-            <a href="photography.html" class="more-btn">More Photography</a>
-        </div>
-         <div class="card featured" data-id="f2">
-                 <img src="images/babynut.jpg" alt="Painting of a cat sleeping under blankets">
-            <h3>'Freeloader' 2025</h3>
-            <p>A small acrylic painting portraying a cat sleeping from beneath rumpled blankets.</p>
-            <a href="sketchbook.html" class="more-btn">More from my Sketchbook</a>
-        </div>
-         <div class="card featured" data-id="f3">
-                 <img src="images/Bluebell&Bow_oval_final.png" alt="Logo with bluebell flowers tied in a bow">
-            <h3>Bluebell & Bow Logo</h3>
-            <p>Logo Design and creation for a small sewing business.</p>
-            <a href="graphicdesign.html" class="more-btn">More Graphic Design</a>
-        </div>
-         <div class="card featured" data-id="f4">
-                 <img src="images/pbj-bears.jpg" alt="Peanut Butter Jelly bears">
-            <h3>PBJ Bears</h3>
-            <p>A food art piece featuring peanut butter bears and jelly squares arranged on toast.</p>
-            <a href="craftroom.html" class="more-btn">More from my Craft Room</a>
-        </div>
-    </div>
+  <h2>Featured Projects</h2>
+  <div class="cards featured-cards">
+    
+    <article class="card featured" data-id="f1">
+      <img
+        src="images/boat couple.jpg"
+        alt="Man holding woman on a boat at sunset"
+        loading="lazy"
+        class="featured-trigger"
+        tabindex="0"
+        data-title="Held in Quiet, 2023"
+        data-excerpt="A fleeting moment of tenderness captured on the river."
+        data-img="images/boat couple.jpg"
+        data-content="“Held in Quiet” captures an intimate pause amid motion — two figures leaning into stillness as the ferry drifts forward. The gentle placement of a hand conveys both tenderness and protection, blurring the boundary between affection and contemplation. Shot in black and white, the absence of color heightens the emotional tone, focusing attention on gesture, light, and atmosphere. This photograph reflects themes of connection, transience, and the quiet language of human touch — moments that speak not in words, but in weight and warmth.">
+      <h3>Held in Quiet, 2023</h3>
+      <p>A fleeting moment of tenderness captured on the river.</p>
+      <a href="photography.html" class="more-btn">View More Photography</a>
+    </article>
+
+    <article class="card featured" data-id="f2">
+      <img
+        src="images/babynut.jpg"
+        alt="Painting of a cat sleeping beneath blankets"
+        loading="lazy"
+        class="featured-trigger"
+        tabindex="0"
+        data-title="Freeloader, 2025"
+        data-excerpt="A small acrylic painting portraying a cat sleeping beneath rumpled blankets."
+        data-img="images/babynut.jpg"
+        data-content="“Freeloader” is a cozy acrylic study in texture and quiet domesticity. The painting depicts a small cat nestled into soft folds of blankets, rendered in warm tones and subtle brushwork. Through the tactile surface and layered composition, the work explores themes of comfort, rest, and hidden companionship — finding serenity in the overlooked moments of everyday life.">
+      <h3>Freeloader, 2025</h3>
+      <p>A small acrylic painting portraying a cat sleeping beneath rumpled blankets.</p>
+      <a href="sketchbook.html" class="more-btn">View More Sketchbook Art</a>
+    </article>
+
+    <article class="card featured" data-id="f3">
+      <img
+        src="images/Bluebell&Bow_oval_final.png"
+        alt="Logo with bluebell flowers tied in a bow"
+        loading="lazy"
+        class="featured-trigger"
+        tabindex="0"
+        data-title="Bluebell & Bow Logo"
+        data-excerpt="Logo design and branding for a small sewing business."
+        data-img="images/Bluebell&Bow_oval_final.png"
+        data-content="This logo for Bluebell & Bow combines delicate botanical illustration with modern typographic balance. Inspired by handmade textiles and soft cottage motifs, the bluebell imagery symbolizes grace and creativity. The branding package included logo variations, typography, and color palette guidelines tailored for print and digital use.">
+      <h3>Bluebell & Bow Logo</h3>
+      <p>Logo design and branding for a small sewing business.</p>
+      <a href="graphicdesign.html" class="more-btn">View More Graphic Design</a>
+    </article>
+
+    <article class="card featured" data-id="f4">
+      <img
+        src="images/pbj-bears.jpg"
+        alt="Peanut butter bears on toast with jelly squares"
+        loading="lazy"
+        class="featured-trigger"
+        tabindex="0"
+        data-title="PBJ Bears"
+        data-excerpt="A playful food art composition featuring peanut butter bears and jelly squares."
+        data-img="images/pbj-bears.jpg"
+        data-content="“PBJ Bears” blends culinary playfulness with design composition. Each peanut butter bear is carefully shaped on toast and paired with geometric jelly squares, creating a charming mix of nostalgia and minimalism. The piece reflects on creativity in everyday materials, blurring the boundary between food styling, design, and art.">
+      <h3>PBJ Bears</h3>
+      <p>A playful food art composition featuring peanut butter bears and jelly squares.</p>
+      <a href="craftroom.html" class="more-btn">View More Craft Projects</a>
+    </article>
+
+  </div>
 </section>
 
-<!-- Modal -->
-<div id="featuredModal" class="modal">
-    <span class="close" id="closeFeatured">&times;</span>
-    <div class="modal-content">
-        <img id="modalImage" src="" alt="">
-        <h2 id="modalTitle"></h2>
-        <p id="modalDesc"></p>
-    </div>
-</div>
+
+</main>
 
 <!------------------------------------------------------- Footer ------------------------------------------------------------->
-<footer> 
+<footer class="site-footer" aria-label="Footer">
     <p>&copy; 2025 Emma | All rights reserved</p>
     <p>
-    Follow me on 
-    <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
-    <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
-    <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
+        Follow me on 
+        <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
+        <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
+        <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
     </p>
 
     <p>
-    To get in touch:
-    <a href="https://www.instagram.com/emmjoelle/" target="_blank">DM</a> |
-    <a href="mailto:contact@emmjoelle.com">Email</a> |
-    <a href="contact.html">Contact form</a>
+        To get in touch:
+        <a href="https://www.instagram.com/emmjoelle/" target="_blank">DM</a> |
+        <a href="mailto:contact@emmjoelle.com">Email</a> |
+        <a href="contact.html">Contact form</a>
     </p>
 </footer>
 
-<script src="js/script.js" defer></script>
-
 <!-- Global Modal -->
-<div id="modal" class="modal" aria-hidden="true">
-  <div id="modalContent"></div>
-  <span id="modalClose" class="close">&times;</span>
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+    <div id="modalContent"></div>
+  </div>
 </div>
+
+<script src="js/script.js" defer></script>
 
 </body>
 </html>

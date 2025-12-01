@@ -3,100 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emma's Creative Studio</title>
+<title>Sketchbook | emmjoelle</title>
+<meta name="description" content="Emma Goodman's sketchbook - drawings, paintings, and studies in graphite, watercolor, acrylic, and digital illustration exploring emotion and storytelling.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- Skip link for keyboard users -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Header / Navigation -->
-    <header>
-    <div class="logo-container">
-        <img src="images/logo.png" alt="Emma Logo" class="logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="portfolio.html">Portfolio</a>
-                <ul class="dropdown-content">
-                    <li><a href="graphicdesign.html">Graphic Design</a></li>
-                    <li><a href="photography.html">Photography</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="studio.html">Studio</a>
-                <ul class="dropdown-content">
-                    <li><a href="sketchbook.html">Sketchbook</a></li>
-                    <li><a href="craftroom.html">Craft Room</a></li>
-                    <li><a href="theatre.html">Home Theatre</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="images/logo.png" alt="Emma Logo" class="logo">
+  </div>
+  <nav class="main-nav" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="portfolio.html">Portfolio</a>
+        <ul class="dropdown-content">
+          <li><a href="graphicdesign.html">Graphic Design</a></li>
+          <li><a href="photography.html">Photography</a></li>
         </ul>
-    </nav>
+      </li>
+      <li class="dropdown">
+        <a href="studio.html">Studio</a>
+        <ul class="dropdown-content">
+          <li><a href="sketchbook.html" aria-current="page">Sketchbook</a></li>
+          <li><a href="craftroom.html">Craft Room</a></li>
+          <li><a href="theatre.html">Home Theatre</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
+<!-- Main content -->
+<main id="main-content" aria-label="Page content">
 
-<!-- Hero / Intro -->
-<section class="intro">
-    <h2>Sketchbook</h2>
-    <p>Illustrations, paintings, and sketches — digital and traditional.</p>
-</section>
+  <!-- Hero / Intro -->
+  <section class="intro">
+    <h1>Sketchbook</h1>
+    <p>Illustrations, paintings, and sketches — digital and traditional explorations in form, color, and storytelling.</p>
+  </section>
 
-<!-- Traditional Sketchbook Gallery -->
-<section class="gallery-section">
-    <h2 style="text-align:center; margin-top:50px;">My Traditional Sketches</h2>
-    <div id="galleryTrad" class="gallery">
+  <!-- Traditional Sketchbook Gallery -->
+  <section class="gallery-section">
+    <h2 class="gallery-heading">Traditional Sketches</h2>
+    <div id="galleryTrad" class="gallery" role="region" aria-label="Traditional Sketches Gallery">
+      <!-- Gallery items inserted dynamically by JS -->
     </div>
-</section>
+  </section>
 
-<!-- Watercolor Gallery -->
-<section class="gallery-section">
-    <h2 style="text-align:center; margin-top:50px;">Watercolor</h2>
-    <div id="galleryWatercolor" class="gallery">
+  <!-- Watercolor Gallery -->
+  <section class="gallery-section">
+    <h2 class="gallery-heading">Watercolor</h2>
+    <div id="galleryWatercolor" class="gallery" role="region" aria-label="Watercolor Gallery">
+      <!-- Gallery items inserted dynamically by JS -->
     </div>
-</section>
+  </section>
 
-<!-- Digital Sketchbook Gallery -->
-<section class="gallery-section">
-    <h2 style="text-align:center; margin-top:50px;">My Digital Paintings</h2>
-    <div id="galleryDigital" class="gallery">
+  <!-- Digital Sketchbook Gallery -->
+  <section class="gallery-section">
+    <h2 class="gallery-heading">Digital Paintings</h2>
+    <div id="galleryDigital" class="gallery" role="region" aria-label="Digital Paintings Gallery">
+      <!-- Gallery items inserted dynamically by JS -->
     </div>
-</section>
+  </section>
 
-<!-- Acrylic Painting Gallery -->
-<section class="gallery-section">
-    <h2 style="text-align:center; margin-top:50px;">Acrylic</h2>
-    <div id="galleryAcrylic" class="gallery">
+  <!-- Acrylic Painting Gallery -->
+  <section class="gallery-section">
+    <h2 class="gallery-heading">Acrylic Paintings</h2>
+    <div id="galleryAcrylic" class="gallery" role="region" aria-label="Acrylic Paintings Gallery">
+      <!-- Gallery items inserted dynamically by JS -->
     </div>
-</section>
+  </section>
 
-<!-- Modal -->
-<div id="modal" class="modal" aria-hidden="true">
-    <span class="close" id="modalClose">&times;</span>
-    <div id="modalContent"></div>
-</div>
+</main>
 
 <!-- Footer -->
-<footer> 
-    <p>&copy; 2025 Emma | All rights reserved</p>
-    <p>
+<footer class="site-footer" aria-label="Footer">
+  <p>&copy; 2025 Emma | All rights reserved</p>
+  <p>
     Follow me on 
     <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
     <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
     <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
-    </p>
-
-    <p>
+  </p>
+  <p>
     To get in touch:
     <a href="https://www.instagram.com/emmjoelle/" target="_blank">DM</a> |
     <a href="mailto:contact@emmjoelle.com">Email</a> |
     <a href="contact.html">Contact form</a>
-    </p>
+  </p>
 </footer>
+
+<!-- Global Modal -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
 
 <script src="js/script.js" defer></script>
 </body>

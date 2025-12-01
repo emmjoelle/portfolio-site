@@ -3,78 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emma's Creative Studio</title>
+<title>Shop | emmjoelle</title>
+<meta name="description" content="The shop where you can purchase artwork from Emma Goodman's collection.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- Skip link for keyboard users -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <!-- Header / Navigation -->
-    <header>
-    <div class="logo-container">
-        <img src="images/logo.png" alt="Emma Logo" class="logo">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="portfolio.html">Portfolio</a>
-                <ul class="dropdown-content">
-                    <li><a href="graphicdesign.html">Graphic Design</a></li>
-                    <li><a href="photography.html">Photography</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="studio.html">Studio</a>
-                <ul class="dropdown-content">
-                    <li><a href="sketchbook.html">Sketchbook</a></li>
-                    <li><a href="craftroom.html">Craft Room</a></li>
-                    <li><a href="theatre.html">Home Theatre</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="images/logo.png" alt="Emma Logo" class="logo">
+  </div>
+  <nav class="main-nav" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="portfolio.html">Portfolio</a>
+        <ul class="dropdown-content">
+          <li><a href="graphicdesign.html">Graphic Design</a></li>
+          <li><a href="photography.html">Photography</a></li>
         </ul>
-    </nav>
+      </li>
+      <li class="dropdown">
+        <a href="studio.html">Studio</a>
+        <ul class="dropdown-content">
+          <li><a href="sketchbook.html">Sketchbook</a></li>
+          <li><a href="craftroom.html">Craft Room</a></li>
+          <li><a href="theatre.html">Home Theatre</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="shop.html" aria-current="page">Shop</a></li>
+    </ul>
+  </nav>
 </header>
 
+<!-- Main content -->
+<main id="main-content" aria-label="Page content">
 
-<!-- Hero / Intro -->
-<section class="intro">
-    <h2>Gift Shop</h2>
-</section>
+  <!-- Hero / Intro -->
+  <section class="intro">
+    <h1>Gift Shop</h1>
+    <p>Explore my curated collection of art prints, ceramics, and handmade pieces available for purchase.</p>
+  </section>
 
+  <!-- Shop Section -->
+  <section class="shop">
+    <h2>Available Artworks & Merchandise</h2>
+    <p>Featuring original artwork, wearable art, and one-of-a-kind creative items.</p>
+    <div class="gallery" role="region" aria-label="Shop Gallery">
+      <figure>
+        <img src="images/shop1.jpg" alt="Framed art print with abstract color blocks in a neutral palette.">
+        <figcaption>Abstract Color Print</figcaption>
+      </figure>
+      <figure>
+        <img src="images/shop2.jpg" alt="Set of handmade ceramic mugs with textured glaze.">
+        <figcaption>Handmade Ceramic Mugs</figcaption>
+      </figure>
+      <figure>
+        <img src="images/shop3.jpg" alt="Embroidered patch featuring floral designs on denim fabric.">
+        <figcaption>Floral Embroidered Patch</figcaption>
+      </figure>
+    </div>
+  </section>
 
-<main>
-    <section class="shop">
-        <h2>Available Artworks & Merchandise</h2>
-        <p>Art prints, stickers, ceramics, wearable art, and more.</p>
-        <div class="gallery">
-            <img src="images/shop1.jpg" alt="Shop item 1">
-            <img src="images/shop2.jpg" alt="Shop item 2">
-            <img src="images/shop3.jpg" alt="Shop item 3">
-        </div>
-    </section>
 </main>
 
 <!-- Footer -->
-<footer> 
-    <p>&copy; 2025 Emma | All rights reserved</p>
-    <p>
+<footer class="site-footer" aria-label="Footer">
+  <p>&copy; 2025 Emma | All rights reserved</p>
+  <p>
     Follow me on 
     <a href="https://www.instagram.com/emmjoelle/" target="_blank">Instagram</a> |
     <a href="https://www.youtube.com/@emmjoelle" target="_blank">YouTube</a> |
     <a href="https://www.linkedin.com/in/emmajoellegoodman/" target="_blank">LinkedIn</a>
-    </p>
+  </p>
 
-    <p>
+  <p>
     To get in touch:
     <a href="https://www.instagram.com/emmjoelle/" target="_blank">DM</a> |
     <a href="mailto:contact@emmjoelle.com">Email</a> |
     <a href="contact.html">Contact form</a>
-    </p>
+  </p>
 </footer>
+
+<!-- Global Modal -->
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+  <div id="modalContent"></div>
+</div>
 
 <script src="js/script.js" defer></script>
 </body>
