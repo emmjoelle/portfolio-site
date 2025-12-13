@@ -1062,4 +1062,71 @@ grid-template-columns: 1fr; /* single column on phone */
         font-size: 1.3rem;
     }
 }
+/* ---------------- MOBILE NAVIGATION ---------------- */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #00203D;
+  cursor: pointer;
+}
 
+/* Desktop default: nav visible, toggle hidden */
+.main-nav {
+  display: flex;
+}
+
+/* Dropdowns already covered by your existing CSS */
+
+/* Mobile layout */
+@media (max-width: 900px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 20px;
+  }
+
+  .nav-toggle {
+    display: block;
+    z-index: 2001;
+  }
+
+  .main-nav {
+    display: none;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #c0c8d4;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-nav ul li .dropdown-content {
+    position: static;
+    transform: none;
+    border: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+  }
+
+  .main-nav ul li:hover .dropdown-content {
+    display: block;
+  }
+
+  nav ul li a {
+    padding: 10px;
+    color: #00203D;
+    background: transparent;
+  }
+}
