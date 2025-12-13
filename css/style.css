@@ -973,6 +973,30 @@ footer a:hover {
   transform: scale(1.05);
 }
 
+#backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: none;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+#backToTop:hover,
+#backToTop:focus {
+  background-color: #555;
+  transform: scale(1.1);
+}
+
 /*--------------- Responsive Layout ----------------*/
 @media (max-width: 768px) {
     .about-content {
