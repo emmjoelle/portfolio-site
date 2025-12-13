@@ -980,7 +980,7 @@ footer a:hover {
 #backToTop {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  right: 6rem; /* was 2rem — move left to make room for chatbot */
   display: none;
   background-color: #222;
   color: #fff;
@@ -992,7 +992,7 @@ footer a:hover {
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
   transition: background-color 0.3s ease, transform 0.2s ease;
-  z-index: 1000;
+  z-index: 999; /* stays above most elements, but below chatbot */
 }
 
 #backToTop:hover,
