@@ -913,12 +913,23 @@ footer a:hover {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
+  z-index: 1100; /* make sure it sits above the modal content */
 }
 
 .close:focus,
 #modalClose:focus {
   outline: 3px solid #00203D;
   outline-offset: 3px;
+}
+
+/* Tweak position + size on smaller screens so it doesn't get cut off */
+@media (max-width: 600px) {
+  .close,
+  #modalClose {
+    top: 10px;
+    right: 16px;
+    font-size: 1.8rem;
+  }
 }
 
 /* Smooth fade-in */
