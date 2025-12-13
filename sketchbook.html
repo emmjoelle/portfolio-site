@@ -51,14 +51,22 @@
     <p>Illustrations, paintings, and sketches — digital and traditional explorations in form, color, and storytelling.</p>
   </section>
 
- <!-- Section Navigation Buttons -->
-  <nav class="section-nav" aria-label="Sketchbook section navigation">
-    <button onclick="document.getElementById('galleryTrad').scrollIntoView({behavior:'smooth'});">Traditional</button>
-    <button onclick="document.getElementById('galleryWatercolor').scrollIntoView({behavior:'smooth'});">Watercolor</button>
-    <button onclick="document.getElementById('galleryDigital').scrollIntoView({behavior:'smooth'});">Digital</button>
-    <button onclick="document.getElementById('galleryAcrylic').scrollIntoView({behavior:'smooth'});">Acrylic</button>
-  </nav>
- 
+<!-- Section Navigation Buttons -->
+<nav class="section-nav" aria-label="Sketchbook section navigation">
+  <button onclick="scrollToSection('galleryTrad')">Traditional</button>
+  <button onclick="scrollToSection('galleryWatercolor')">Watercolor</button>
+  <button onclick="scrollToSection('galleryDigital')">Digital</button>
+  <button onclick="scrollToSection('galleryAcrylic')">Acrylic</button>
+</nav>
+
+<script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    const offset = -100;
+    const top = el.getBoundingClientRect().top + window.scrollY + offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+</script>
 
   <!-- Traditional Sketchbook Gallery -->
   <section class="gallery-section">
