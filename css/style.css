@@ -658,12 +658,13 @@ section.visible {
   border: 2px solid #c0c8d4;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  overflow: visible; /* allow text to fully display */
+  overflow: hidden; 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* no forced space-between */
+  justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: auto; /* grow naturally with text */
+  height: auto;    
+  aspect-ratio: auto;  
 }
 
 .card.featured:hover {
@@ -1073,9 +1074,7 @@ grid-template-columns: 1fr; /* single column on phone */
   }
 
   .card.featured {
-    overflow: visible;          /* allow text to show fully */
-    height: auto;               /* let card expand with content */
-    justify-content: flex-start; /* prevent space-between clipping */
+    justify-content: flex-start;
     margin: 0 auto;
     width: 90%;
   }
