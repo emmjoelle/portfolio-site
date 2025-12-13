@@ -272,91 +272,85 @@ padding: 80px 20px 50px 20px;
 }
 
 
-/* contact form */
+/* -------- Contact Form (Formspree Version) -------- */
 .contact {
   max-width: 500px;
   margin: 50px auto;
   padding: 30px;
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contact h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.form-group {
-  position: relative;
   margin-bottom: 25px;
+  color: #00203D;
+  font-weight: 700;
 }
 
-/* inputs + textarea */
-.form-group input,
-.form-group textarea {
-  width: 100%;
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Label styling */
+.contact label {
+  font-weight: 600;
+  color: #00203D;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Input + Textarea fields */
+.contact input[type="email"],
+.contact textarea {
+  margin-top: 6px;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
   border: 1px solid #00203D;
   border-radius: 8px;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
   background-color: #fff;
   color: #111;
-
-  /* extra top padding so there’s room for the label inside */
-  padding: 1.1rem 0.9rem 0.7rem 0.9rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* base label position (inside the field) */
-.form-group label {
-  position: absolute;
-  left: 0.9rem;
-  top: 0.9rem;
-  color: #00203D;
-  font-size: 1rem;
-  pointer-events: none;
-  transition: 0.2s ease all;
-  background-color: transparent;
-}
-
-/* float label on focus or when there is text */
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label,
-.form-group textarea:focus + label,
-.form-group textarea:not(:placeholder-shown) + label {
-  top: -0.5rem;
-  left: 0.7rem;
-  font-size: 0.8rem;
-  color: #00203D;
-  background-color: #fff;
-  padding: 0 4px;
-}
-
-/* focus styles */
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #00203D;
-  box-shadow: 0 0 5px rgba(0,119,204,0.3);
+.contact input[type="email"]:focus,
+.contact textarea:focus {
   outline: none;
+  border-color: #dfb952;
+  box-shadow: 0 0 6px rgba(223, 185, 82, 0.4);
 }
 
-/* submit button */
+/* Textarea resize and height */
+.contact textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Submit button */
 .contact button {
   background-color: #00203D;
-  color: white;
+  color: #fff;
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   width: 100%;
 }
 
-.contact button:hover {
+.contact button:hover,
+.contact button:focus {
   background-color: #b6dbf1;
   color: #00203D;
+  transform: scale(1.03);
 }
 
 /* ------------- Gallerys ------------------ */
