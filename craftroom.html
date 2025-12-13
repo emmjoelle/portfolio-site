@@ -51,6 +51,22 @@
     <p>Exploring ceramics, embroidery, wearable art, and other tangible, handcrafted creations.</p>
   </section>
 
+  <!-- Section Navigation Buttons -->
+<nav class="section-nav" aria-label="Craft Room section navigation">
+  <button onclick="scrollToSection('galleryWearable')">Wearable Art</button>
+  <button onclick="scrollToSection('galleryPottery')">Ceramics</button>
+  <button onclick="scrollToSection('galleryMisc')">Misc Crafting</button>
+</nav>
+
+<script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    const offset = -100;
+    const top = el.getBoundingClientRect().top + window.scrollY + offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+</script>
+
   <!-- Wearable Art Gallery -->
   <section class="gallery-section">
     <h2 class="gallery-heading">Wearable Art Projects</h2>

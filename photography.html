@@ -51,6 +51,22 @@
     <p>Explore my freelance and fine art photography work including portraits, landscapes, and experimental compositions.</p>
   </section>
 
+  <!-- Section Navigation Buttons -->
+<nav class="section-nav" aria-label="Photography section navigation">
+  <button onclick="scrollToSection('galleryPort')">Portrait</button>
+  <button onclick="scrollToSection('galleryStreet')">Street</button>
+  <button onclick="scrollToSection('galleryNature')">Nature</button>
+</nav>
+
+<script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    const offset = -100;
+    const top = el.getBoundingClientRect().top + window.scrollY + offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+</script>
+
   <!-- Portrait Photography Gallery -->
   <section class="gallery-section">
     <h2 class="gallery-heading">Portrait Photography</h2>

@@ -51,6 +51,22 @@
     <p>Explore my graphic design work including logos, digital ads, branding projects, and freelance work.</p>
   </section>
 
+<!-- Section Navigation Buttons -->
+<nav class="section-nav" aria-label="Graphic Design section navigation">
+  <button onclick="scrollToSection('galleryAds')">Digital Ads</button>
+  <button onclick="scrollToSection('galleryLogo')">Logos</button>
+  <button onclick="scrollToSection('galleryPrint')">Print Design</button>
+</nav>
+
+<script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    const offset = -100;
+    const top = el.getBoundingClientRect().top + window.scrollY + offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+</script>
+
     <!-- Digital Ad Gallery -->
   <section class="gallery-section">
     <h2 class="gallery-heading">Digital Ads</h2>
