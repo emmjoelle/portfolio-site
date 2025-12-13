@@ -979,10 +979,10 @@ footer a:hover {
 
 #backToTop {
   position: fixed;
-  bottom: 2rem;
-  right: 6rem; /* was 2rem — move left to make room for chatbot */
+  bottom: 1.5rem;     
+  right: 5.5rem;       
   display: none;
-  background-color: #222;
+  background-color: #444;
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -990,14 +990,14 @@ footer a:hover {
   height: 45px;
   font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  z-index: 999; /* stays above most elements, but below chatbot */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+  transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+  z-index: 999; /* keeps it visible but under chatbot bubble */
 }
 
 #backToTop:hover,
 #backToTop:focus {
-  background-color: #555;
+  background-color: #666; /* subtle light-on-hover effect */
   transform: scale(1.1);
 }
 
