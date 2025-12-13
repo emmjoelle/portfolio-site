@@ -658,11 +658,12 @@ section.visible {
   border: 2px solid #c0c8d4;
   border-radius: 12px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  overflow: visible; /* allow text to fully display */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start; /* no forced space-between */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: auto; /* grow naturally with text */
 }
 
 .card.featured:hover {
@@ -1066,13 +1067,41 @@ grid-template-columns: 1fr; /* single column on phone */
 }
 
 @media (max-width: 768px) {
-    .card.featured img {
-        height: 220px;
-    }
-    .card.featured h3 {
-        font-size: 1.3rem;
-    }
+  .featured-cards {
+    grid-template-columns: 1fr; /* stack in one column */
+    gap: 25px;
+  }
+
+  .card.featured {
+    overflow: visible;          /* allow text to show fully */
+    height: auto;               /* let card expand with content */
+    justify-content: flex-start; /* prevent space-between clipping */
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .card.featured img {
+    height: auto; /* let images resize naturally */
+    max-height: 240px;
+    object-fit: cover;
+  }
+
+  .card.featured h3 {
+    font-size: 1.2rem;
+  }
+
+  .card.featured p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+    overflow: visible; /* ensure text not clipped */
+  }
+
+  .card.featured .more-btn {
+    margin-top: 8px;
+  }
 }
+
 /* ---------------- MOBILE NAVIGATION ---------------- */
 .nav-toggle {
   display: none;
