@@ -947,6 +947,32 @@ footer a:hover {
   outline-offset: 4px;
 }
 
+.section-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.section-nav button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.section-nav button:hover,
+.section-nav button:focus {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
 /*--------------- Responsive Layout ----------------*/
 @media (max-width: 768px) {
     .about-content {

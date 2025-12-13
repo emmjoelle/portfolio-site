@@ -34,7 +34,6 @@
           <li><a href="sketchbook.html" aria-current="page">Sketchbook</a></li>
           <li><a href="craftroom.html">Craft Room</a></li>
           <li><a href="theatre.html">Home Theatre</a></li>
-          <li><a href="blog.html">Blog</a></li>
         </ul>
       </li>
       <li><a href="about.html">About</a></li>
@@ -52,11 +51,19 @@
     <p>Illustrations, paintings, and sketches — digital and traditional explorations in form, color, and storytelling.</p>
   </section>
 
+ <!-- Section Navigation Buttons -->
+  <nav class="section-nav" aria-label="Sketchbook section navigation">
+    <button onclick="document.getElementById('galleryTrad').scrollIntoView({behavior:'smooth'});">Traditional</button>
+    <button onclick="document.getElementById('galleryWatercolor').scrollIntoView({behavior:'smooth'});">Watercolor</button>
+    <button onclick="document.getElementById('galleryDigital').scrollIntoView({behavior:'smooth'});">Digital</button>
+    <button onclick="document.getElementById('galleryAcrylic').scrollIntoView({behavior:'smooth'});">Acrylic</button>
+  </nav>
+ 
+
   <!-- Traditional Sketchbook Gallery -->
   <section class="gallery-section">
     <h2 class="gallery-heading">Traditional Sketches</h2>
     <div id="galleryTrad" class="gallery" role="region" aria-label="Traditional Sketches Gallery">
-      <!-- Gallery items inserted dynamically by JS -->
     </div>
   </section>
 
@@ -64,7 +71,6 @@
   <section class="gallery-section">
     <h2 class="gallery-heading">Watercolor</h2>
     <div id="galleryWatercolor" class="gallery" role="region" aria-label="Watercolor Gallery">
-      <!-- Gallery items inserted dynamically by JS -->
     </div>
   </section>
 
@@ -72,7 +78,6 @@
   <section class="gallery-section">
     <h2 class="gallery-heading">Digital Paintings</h2>
     <div id="galleryDigital" class="gallery" role="region" aria-label="Digital Paintings Gallery">
-      <!-- Gallery items inserted dynamically by JS -->
     </div>
   </section>
 
@@ -80,7 +85,6 @@
   <section class="gallery-section">
     <h2 class="gallery-heading">Acrylic Paintings</h2>
     <div id="galleryAcrylic" class="gallery" role="region" aria-label="Acrylic Paintings Gallery">
-      <!-- Gallery items inserted dynamically by JS -->
     </div>
   </section>
 
