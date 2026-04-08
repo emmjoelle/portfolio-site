@@ -581,10 +581,10 @@ padding: 80px 20px 50px 20px;
 }
 
 .offers-card h3 {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #00203D;
+    font-size: 1.3rem;
+  color: #00203D;
+  font-weight: 600;
+  margin: 15px 20px 8px 20px;
 }
 
 /* Fade-in Animation */
