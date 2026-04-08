@@ -560,6 +560,18 @@ padding: 80px 20px 50px 20px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-weight: 600;
+  display: block;
+  text-decoration: none;  /* removes underline */
+  color: inherit;         /* keeps your normal text color */
+  cursor: pointer;
+}
+
+.offers-card,
+.offers-card:visited,
+.offers-card:hover,
+.offers-card:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 .offers-card:hover {
