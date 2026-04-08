@@ -549,7 +549,7 @@ padding: 80px 20px 50px 20px;
     margin: auto;
 }
 
-.skill-card {
+.offers-card {
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
@@ -558,7 +558,7 @@ padding: 80px 20px 50px 20px;
     font-weight: 600;
 }
 
-.skill-card:hover {
+.offers-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
