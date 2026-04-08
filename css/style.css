@@ -595,7 +595,8 @@ padding: 80px 20px 50px 20px;
 .package-images {
   display: flex;
   gap: 20px;
-  margin-bottom: 30px;
+  max-width: 1200px;
+  margin: 0 auto 30px;
 }
 
 /* Make images take up equal space */
