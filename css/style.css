@@ -580,8 +580,8 @@ padding: 80px 20px 50px 20px;
     background-color: #b6dbf1;
 }
 
-.offers h3 {
-    font-size: 1.3rem;
+.offers-card h3 {
+    font-size: 1.3rem !important;
   color: #00203D;
   font-weight: 600;
   margin: 15px 20px 8px 20px;
