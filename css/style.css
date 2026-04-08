@@ -604,8 +604,7 @@ padding: 80px 20px 50px 20px;
   flex: 1;              /* makes both images expand equally */
   width: 100%;          /* fill the flex space */
   height: auto;
-  max-height: 500px;     /* optional: controls how tall they get */
-  object-fit: cover;     /* keeps images nicely cropped */
+  object-fit: contain;
 }
 
 /* Center button */
