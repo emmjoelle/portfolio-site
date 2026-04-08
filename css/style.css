@@ -541,12 +541,15 @@ padding: 80px 20px 50px 20px;
     font-weight: 700;
 }
 
+.offers p {
+  margin-bottom: 20px;
+}
+
 .offers-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(400px, 1fr));;
     gap: 20px;
     max-width: 900px;
-    margin-top: 20px;
     margin: auto;
 }
 
