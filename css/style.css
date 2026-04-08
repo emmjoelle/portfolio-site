@@ -592,6 +592,13 @@ padding: 80px 20px 50px 20px;
   padding: 60px 20px;
 }
 
+.packages h2 {
+    color: #00203D;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
 .package-images {
   display: flex;
   gap: 20px;
@@ -605,6 +612,7 @@ padding: 80px 20px 50px 20px;
   width: 100%;          /* fill the flex space */
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
 /* Center button */
