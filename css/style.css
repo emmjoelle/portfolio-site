@@ -592,28 +592,22 @@ padding: 80px 20px 50px 20px;
   padding: 60px 20px;
 }
 
-.packages h2 {
-  margin-bottom: 30px;
-  font-size: 2rem;
-}
-
-/* Images side-by-side */
 .package-images {
   display: flex;
-  justify-content: center;
   gap: 20px;
   margin-bottom: 30px;
-  flex-wrap: wrap; /* allows stacking on smaller screens */
 }
 
+/* Make images take up equal space */
 .package-images img {
-  width: 300px;   /* adjust as needed */
-  max-width: 100%;
+  flex: 1;              /* makes both images expand equally */
+  width: 100%;          /* fill the flex space */
   height: auto;
-  object-fit: cover;
+  max-height: 500px;     /* optional: controls how tall they get */
+  object-fit: cover;     /* keeps images nicely cropped */
 }
 
-/* Button centered */
+/* Center button */
 .button-container {
   display: flex;
   justify-content: center;
@@ -625,12 +619,6 @@ padding: 80px 20px 50px 20px;
   color: white;
   text-decoration: none;
   border-radius: 5px;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #014f7a;
 }
 
 /* Fade-in Animation */
