@@ -580,6 +580,13 @@ padding: 80px 20px 50px 20px;
     background-color: #b6dbf1;
 }
 
+.offers-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #00203D;
+}
+
 /* Fade-in Animation */
 section {
     opacity: 0;
