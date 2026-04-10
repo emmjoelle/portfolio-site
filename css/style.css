@@ -570,11 +570,15 @@ padding: 80px 20px 50px 20px;
 }
 
 .testimonial-card {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: none;
+    border-radius: 16px;
+    padding: 25px;
+    width: 280px;
+    height: 280px; /* 👈 makes it square */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: transparent;
+    aspect-ratio: 1 / 1; /* 👈 keeps it square but more flexible */
 }
 
 .testimonial-text {
@@ -582,6 +586,7 @@ padding: 80px 20px 50px 20px;
     color: #333;
     line-height: 1.7;
     margin-bottom: 15px;
+    overflow: hidden; /* prevents overflow */
 }
 
 .testimonial-name {
