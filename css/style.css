@@ -565,22 +565,25 @@ padding: 80px 20px 50px 20px;
     gap: 40px;              /* more space between cards */
     justify-content: center;
     flex-wrap: wrap;
+    max-width: 1200px;   /* allows wider layout */
+    margin: 0 auto;
 }
 
 .testimonial-card {
-   background: white;
+   background: transparent;
+   margin: 0 auto;
     border-radius: 16px;
-    padding: 35px;          /* more inner space */
-    width: 300px;           /* fixed width helps squareness */
-    min-height: 260px;      /* makes them more square */
+    padding: 20px;          /* more inner space */
+    width: 420px;
+    max-width: 700px;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
+    box-shadow: none
 
 .testimonial-text {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #333;
     line-height: 1.7;
     margin-bottom: 15px;
