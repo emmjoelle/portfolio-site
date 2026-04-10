@@ -431,13 +431,13 @@ padding: 80px 20px 50px 20px;
 }
 
 #galleryPort {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 110px;
 }
 #galleryStreet {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 110px;
 }
 #galleryNature {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 110px;
 }
 
 /* ----------- Modal ----------- */
