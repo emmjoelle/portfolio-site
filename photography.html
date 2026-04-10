@@ -68,7 +68,7 @@
   function scrollToSection(id) {
     var el = document.getElementById(id);
     if (!el) return; // prevents silent breaking
-    var offset = 100;
+    var offset = 60;
     var top = el.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ 
       top: top, 
