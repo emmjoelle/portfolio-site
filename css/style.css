@@ -65,7 +65,13 @@ nav a:hover, nav a.active {
 nav {
     display: flex;
     justify-content: center;
-    background: transparent;
+    background: white;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 /* MAIN NAV LIST */
@@ -136,6 +142,9 @@ nav ul li:hover .dropdown-content {
     display: block;
 }
 
+body {
+  padding-top: 70px; /*adjust to nav height so content doesn't get covered*/
+}
 
 /* Hero / Intro Section */
 .intro {
