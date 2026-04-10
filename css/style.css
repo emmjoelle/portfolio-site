@@ -576,13 +576,14 @@ padding: 80px 20px 50px 20px;
     height: 280px; /* 👈 makes it square */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 15px;
     background: transparent;
     aspect-ratio: 1 / 1; /* 👈 keeps it square but more flexible */
 }
 
 .testimonial-text {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #333;
     line-height: 1.7;
     margin-bottom: 15px;
