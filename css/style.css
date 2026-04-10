@@ -377,7 +377,6 @@ padding: 80px 20px 50px 20px;
     padding: 60px 20px;
     max-width: 1200px;
     margin: auto;
-    scroll-margin-top: var(--offset, 90px);
 }
 
 .gallery-section h2 {
@@ -546,6 +545,48 @@ padding: 80px 20px 50px 20px;
     margin-bottom: 15px;
     color: #333;
 }
+
+/* Testimonials Section */
+
+.testimonials-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: #f7f9fb; /* soft contrast from gallery sections */
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+}
+
+.testimonials-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 320px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    color: #dfb952;
+}
+
 
 /* Offers Section */
 .offers {
