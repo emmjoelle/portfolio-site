@@ -59,38 +59,42 @@
 
   <!-- Section Navigation Buttons -->
 <nav class="section-nav" aria-label="Craft Room section navigation">
-  <button onclick="scrollToSection('galleryWearable')">Wearable Art</button>
-  <button onclick="scrollToSection('galleryPottery')">Ceramics</button>
-  <button onclick="scrollToSection('galleryMisc')">Misc Crafting</button>
+  <button onclick="scrollToSection('sectionWearable')">Wearable Art</button>
+  <button onclick="scrollToSection('sectionPottery')">Ceramics</button>
+  <button onclick="scrollToSection('sectionMisc')">Misc Crafting</button>
 </nav>
 
 <script>
   function scrollToSection(id) {
-    const el = document.getElementById(id);
-    const offset = -100;
-    const top = el.getBoundingClientRect().top + window.scrollY + offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    var el = document.getElementById(id);
+    if (!el) return; // prevents silent breaking
+    var offset = 60;
+    var top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ 
+      top: top, 
+      behavior: 'smooth' 
+    });
   }
 </script>
 
   <!-- Wearable Art Gallery -->
-  <section class="gallery-section">
-    <h2 id="galleryWearable" class="gallery-heading">Wearable Art Projects</h2>
-    <div class="gallery" role="region" aria-label="Wearable Art Gallery">
+  <section class="gallery-section" id="sectionWearable">
+    <h2 class="gallery-heading">Wearable Art Projects</h2>
+    <div class="gallery" id="galleryWearable" role="region" aria-label="Wearable Art Gallery">
     </div>
   </section>
 
   <!-- Pottery Gallery -->
-  <section class="gallery-section">
-    <h2 id="galleryPottery" class="gallery-heading">Ceramic Projects</h2>
-    <div class="gallery" role="region" aria-label="Ceramic Projects Gallery">
+  <section class="gallery-section" id="sectionPottery">
+    <h2 class="gallery-heading">Ceramic Projects</h2>
+    <div class="gallery" id="galleryPottery" role="region" aria-label="Ceramic Projects Gallery">
     </div>
   </section>
 
   <!-- Misc Gallery -->
-  <section class="gallery-section">
-    <h2 id="galleryMisc" class="gallery-heading">Miscellaneous Crafting Projects</h2>
-    <div class="gallery" role="region" aria-label="Miscellaneous Crafting Gallery">
+  <section class="gallery-section" id="sectionMisc">
+    <h2 class="gallery-heading">Miscellaneous Crafting Projects</h2>
+    <div class="gallery" id="galleryMisc" role="region" aria-label="Miscellaneous Crafting Gallery">
     </div>
   </section>
 

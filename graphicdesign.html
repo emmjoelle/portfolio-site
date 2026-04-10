@@ -59,38 +59,42 @@
 
 <!-- Section Navigation Buttons -->
 <nav class="section-nav" aria-label="Graphic Design section navigation">
-  <button onclick="scrollToSection('galleryAds')">Digital Ads</button>
-  <button onclick="scrollToSection('galleryLogo')">Logos</button>
-  <button onclick="scrollToSection('galleryPrint')">Print Design</button>
+  <button onclick="scrollToSection('sectionAds')">Digital Ads</button>
+  <button onclick="scrollToSection('sectionLogo')">Logos</button>
+  <button onclick="scrollToSection('sectionPrint')">Print Design</button>
 </nav>
 
 <script>
   function scrollToSection(id) {
-    const el = document.getElementById(id);
-    const offset = -100;
-    const top = el.getBoundingClientRect().top + window.scrollY + offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    var el = document.getElementById(id);
+    if (!el) return; // prevents silent breaking
+    var offset = 60;
+    var top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ 
+      top: top, 
+      behavior: 'smooth' 
+    });
   }
 </script>
 
     <!-- Digital Ad Gallery -->
-  <section class="gallery-section">
-    <h2 id="galleryAds" class="gallery-heading">Digital Ads</h2>
-    <div class="gallery" role="region" aria-label="Digital Ads Gallery">
+  <section class="gallery-section" id="sectionAds">
+    <h2 class="gallery-heading">Digital Ads</h2>
+    <div class="gallery" id="galleryAds" role="region" aria-label="Digital Ads Gallery">
     </div>
   </section>
 
     <!-- Logo Gallery -->
-  <section class="gallery-section">
-    <h2 id="galleryLogo" class="gallery-heading">Logo</h2>
-    <div class="gallery" role="region" aria-label="Logo Gallery">
+  <section class="gallery-section" id="sectionLogo">
+    <h2 class="gallery-heading">Logo</h2>
+    <div class="gallery" id="galleryLogo" role="region" aria-label="Logo Gallery">
     </div>
   </section>
 
     <!-- Print Design Gallery -->
-  <section class="gallery-section">
-    <h2 id="galleryPrint" class="gallery-heading">Print Design</h2>
-    <div class="gallery" role="region" aria-label="Print Design Gallery">
+  <section class="gallery-section" id="sectionPrint">
+    <h2 class="gallery-heading">Print Design</h2>
+    <div class="gallery" id="galleryPrint" role="region" aria-label="Print Design Gallery">
     </div>
   </section>
 
