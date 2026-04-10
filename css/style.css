@@ -430,6 +430,15 @@ padding: 80px 20px 50px 20px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
+#galleryPort {
+    scroll-margin-top: 90px;
+}
+#galleryStreet {
+    scroll-margin-top: 90px;
+}
+#galleryNature {
+    scroll-margin-top: 90px;
+}
 
 /* ----------- Modal ----------- */
 .modal {
