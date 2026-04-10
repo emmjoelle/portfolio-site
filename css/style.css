@@ -65,13 +65,9 @@ nav a:hover, nav a.active {
 nav {
     display: flex;
     justify-content: center;
-    background: white;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    background: transparent;
+    position: relative; /* default state */
+    transition: all 0.3s ease;
 }
 
 /* MAIN NAV LIST */
@@ -142,8 +138,22 @@ nav ul li:hover .dropdown-content {
     display: block;
 }
 
-body {
-  padding-top: 70px; /*adjust to nav height so content doesn't get covered*/
+nav.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+nav.scrolled ul li a {
+    padding: 8px 12px;
+}
+
+body.scrolled {
+    padding-top: 70px; /* match nav height */
 }
 
 /* Hero / Intro Section */

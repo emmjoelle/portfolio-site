@@ -452,5 +452,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+window.addEventListener("scroll", function() {
+    var nav = document.querySelector("nav");
+    var body = document.body;
 
+    if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+        body.classList.add("scrolled");
+    } else {
+        nav.classList.remove("scrolled");
+        body.classList.remove("scrolled");
+    }
+});
 
