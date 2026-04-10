@@ -570,17 +570,12 @@ padding: 80px 20px 50px 20px;
 }
 
 .testimonial-card {
-   background: transparent;
-   margin: 0 auto;
-    border-radius: 16px;
-    padding: 20px;          /* more inner space */
-    width: 420px;
-    max-width: 90%;
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: none
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: none;
+    background: transparent;
+}
 
 .testimonial-text {
     font-size: 0.8rem;
