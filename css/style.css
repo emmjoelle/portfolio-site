@@ -549,7 +549,7 @@ padding: 80px 20px 50px 20px;
 /* Testimonials Section */
 
 .testimonials-section {
-    padding: 80px 20px;
+    padding: 100px 20px;   /* more vertical space */
     text-align: center;
     background: #f7f9fb; /* soft contrast from gallery sections */
 }
@@ -562,23 +562,27 @@ padding: 80px 20px 50px 20px;
 
 .testimonials-container {
     display: flex;
-    gap: 25px;
+    gap: 40px;              /* more space between cards */
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .testimonial-card {
-    background: white;
-    border-radius: 12px;
-    padding: 25px;
-    max-width: 320px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+   background: white;
+    border-radius: 16px;
+    padding: 35px;          /* more inner space */
+    width: 300px;           /* fixed width helps squareness */
+    min-height: 260px;      /* makes them more square */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 .testimonial-text {
     font-size: 1rem;
     color: #333;
-    line-height: 1.5;
+    line-height: 1.7;
     margin-bottom: 15px;
 }
 
@@ -587,6 +591,10 @@ padding: 80px 20px 50px 20px;
     color: #dfb952;
 }
 
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s ease;
+}
 
 /* Offers Section */
 .offers {
