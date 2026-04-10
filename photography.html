@@ -59,40 +59,41 @@
 
   <!-- Section Navigation Buttons -->
 <nav class="section-nav" aria-label="Photography section navigation">
-  <button onclick="scrollToSection('galleryPort')">Portrait</button>
-  <button onclick="scrollToSection('galleryStreet')">Street</button>
-  <button onclick="scrollToSection('galleryNature')">Nature</button>
+  <button onclick="scrollToSection('sectionPort')">Portrait</button>
+  <button onclick="scrollToSection('sectionStreet')">Street</button>
+  <button onclick="scrollToSection('sectionNature')">Nature</button>
 </nav>
 
 <script>
   function scrollToSection(id) {
     const el = document.getElementById(id);
-    const offset = -100;
+    const navHeight = 100;
     const top = el.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ 
       top: top, 
-      behavior: 'smooth' });
+      behavior: 'smooth' 
+    });
   }
 </script>
 
   <!-- Portrait Photography Gallery -->
- <section class="gallery-section"  id="galleryPort">
+ <section class="gallery-section"  id="sectionPort">
     <h2 class="gallery-heading">Portrait Photography</h2>
-    <div class="gallery" role="region" aria-label="Portrait Photography Gallery">
+    <div class="gallery" id="galleryPort" role="region" aria-label="Portrait Photography Gallery">
     </div>
 </section>
 
     <!-- Street Photography Gallery -->
-  <section class="gallery-section" id="galleryStreet">
+  <section class="gallery-section" id="sectionStreet">
     <h2 class="gallery-heading">Street Photography</h2>
-    <div class="gallery" role="region" aria-label="Street Photography Gallery">
+    <div class="gallery" id="galleryStreet" role="region" aria-label="Street Photography Gallery">
     </div>
   </section>
 
     <!-- Nature Photography Gallery -->
-  <section class="gallery-section" id="galleryNature">
+  <section class="gallery-section" id="sectionNature">
     <h2 class="gallery-heading">Nature Photography</h2>
-    <div class="gallery" role="region" aria-label="Nature Photography Gallery">
+    <div class="gallery" id="galleryNature" role="region" aria-label="Nature Photography Gallery">
     </div>
   </section>
 
