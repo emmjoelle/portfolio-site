@@ -377,6 +377,7 @@ padding: 80px 20px 50px 20px;
     padding: 60px 20px;
     max-width: 1200px;
     margin: auto;
+    scroll-margin-top: 90px;
 }
 
 .gallery-section h2 {
@@ -428,6 +429,7 @@ padding: 80px 20px 50px 20px;
   transform: scale(1.05);
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
+
 
 /* ----------- Modal ----------- */
 .modal {
