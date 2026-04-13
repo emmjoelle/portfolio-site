@@ -573,13 +573,12 @@ padding: 80px 20px 50px 20px;
     border-radius: 16px;
     padding: 25px;
     width: 280px;
-    height: 280px; /* 👈 makes it square */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 15px;
     background: transparent;
-    aspect-ratio: 1 / 1; /* 👈 keeps it square but more flexible */
+    min-height: 280px;
 }
 
 .testimonial-text {
@@ -587,7 +586,7 @@ padding: 80px 20px 50px 20px;
     color: #333;
     line-height: 1.7;
     margin-bottom: 15px;
-    overflow: hidden; /* prevents overflow */
+    overflow: visible;
 }
 
 .testimonial-name {
@@ -1252,6 +1251,99 @@ footer a:hover {
   font-weight: 600;
   color: #00203D;
   text-align: left;
+}
+
+/* PACKAGES */
+.package-grid {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.package-card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  flex: 1;
+  min-width: 260px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.package-card:hover {
+  transform: translateY(-6px);
+}
+
+.package-featured {
+  border: 2px solid #00203D;
+}
+
+.sub {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.price {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* ADDONS */
+.addon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* PROJECTS */
+.project-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* PROCESS */
+.steps {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.steps div {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* FAQ */
+.faq-item {
+  margin-bottom: 15px;
+}
+
+/* WHY */
+.why ul {
+  list-style: none;
+  padding: 0;
+}
+
+.why li {
+  margin-bottom: 8px;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  background: #f4f6f8;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .package-grid, .project-grid, .steps {
+    flex-direction: column;
+  }
 }
 
 /* ---------- Responsive tweaks ---------- */
