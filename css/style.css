@@ -639,8 +639,7 @@ padding: 80px 20px 50px 20px;
 
 .testimonials-wrapper {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0 70px; /* creates safe zone for BOTH arrows */
 }
 
 .testimonials-container {
@@ -650,14 +649,12 @@ padding: 80px 20px 50px 20px;
     overflow-x: auto;
     flex-wrap: nowrap;
 
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
 
-    padding: 20px 0; /* ❌ removed side padding (this was causing the issue) */
-    scroll-padding-left: 60px;  /* ✅ allows first card to fully show */
-    scroll-padding-right: 60px; /* ✅ allows last card to fully show */
+    padding: 20px 0; /* keep this clean */
 }
+
 /* ARROWS */
 .carousel-btn {
     position: absolute;
