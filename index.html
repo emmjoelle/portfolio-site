@@ -151,32 +151,42 @@
   <div class="testimonials-container">
 
     <div class="testimonial-card">
-      <p class="testimonial-text">
-        “Whether it is working on our website, contributing to meetings, or offering fresh ideas, Emma consistently delivers high-quality work and exceeded expectations.  The board at NDLC has been very complimentary with the work she has accomplished. Emma leaves a lasting impression as a driven, capable, and collaborative individual. I am confident she will continue to thrive in any professional environment, and I wholeheartedly recommend her for any future opportunities.”
-      </p>
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Whether it is working on our website, contributing to meetings, or offering fresh ideas, Emma consistently delivers high-quality work and exceeded expectations. The board at NDLC has been very complimentary with the work she has accomplished. Emma leaves a lasting impression as a driven, capable, and collaborative individual. I am confident she will continue to thrive in any professional environment, and I wholeheartedly recommend her for any future opportunities.”
+        </p>
+      </div>
+      <button class="view-more-btn">View more</button>
       <p class="testimonial-name">— Tina Fay</p>
     </div>
 
     <div class="testimonial-card">
-      <p class="testimonial-text">
-        “Emma had such an incredible talent to transform my very vague ideas and concepts into the most cohesive and visually stunning design. Every time she sent a proposal, I was blown away by her translation of what I had in mind and how perfect every little detail was. Not only is she beyond professional and a very skilled artist but a true delight to work with. She takes the time to really listen to her clients and their needs, and always delivered milestones earlier than expected. I couldn’t speak more highly of Emma and her work.”
-      </p>
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Emma had such an incredible talent to transform my very vague ideas and concepts into the most cohesive and visually stunning design. Every time she sent a proposal, I was blown away by her translation of what I had in mind and how perfect every little detail was. Not only is she beyond professional and a very skilled artist but a true delight to work with. She takes the time to really listen to her clients and their needs, and always delivered milestones earlier than expected. I couldn’t speak more highly of Emma and her work.”
+        </p>
+      </div>
+      <button class="view-more-btn">View more</button>
       <p class="testimonial-name">— Salome M.</p>
     </div>
 
     <div class="testimonial-card">
-      <p class="testimonial-text">
-        “Emma has done excellent work for me in the form of art design and graphics for my clients. She is attentive to details, listens to what the client is looking for and delivers a unique and beautiful result.”
-      </p>
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Emma has done excellent work for me in the form of art design and graphics for my clients. She is attentive to details, listens to what the client is looking for and delivers a unique and beautiful result.”
+        </p>
+      </div>
+      <button class="view-more-btn">View more</button>
       <p class="testimonial-name">— Jeanne G.</p>
     </div>
 
     <div class="testimonial-card">
-      <p class="testimonial-text">
-        “Emma did a fantastic job updating our garden club's program yearbook.   She is amazing to work with, very knowledgeable, and incredibly talented.  We gave her the bones of the program and let her run with a new design for it.  Emma was able to come up with a gorgeous cohesive spread for us - on schedule and on budget - even when our deadline was greatly shortened at last minute.  And our yearbook came in 3rd place in our class in the District judging!
-        In fact, we loved Emma’s work so much that we then asked her to create a logo for the club.  Again, she took the initiative and came back with a logo design we were ecstatic about. 
-        We look forward to working with Emma again in the future.”
-      </p>
+      <div class="testimonial-content">
+        <p class="testimonial-text">
+          “Emma did a fantastic job updating our garden club's program yearbook. She is amazing to work with, very knowledgeable, and incredibly talented. We gave her the bones of the program and let her run with a new design for it. Emma was able to come up with a gorgeous cohesive spread for us - on schedule and on budget - even when our deadline was greatly shortened at last minute. And our yearbook came in 3rd place in our class in the District judging! In fact, we loved Emma’s work so much that we then asked her to create a logo for the club. Again, she took the initiative and came back with a logo design we were ecstatic about. We look forward to working with Emma again in the future.”
+        </p>
+      </div>
+      <button class="view-more-btn">View more</button>
       <p class="testimonial-name">— Lynne G.</p>
     </div>
 
@@ -315,6 +325,22 @@
     navToggle.setAttribute("aria-expanded", !expanded);
     nav.classList.toggle("active");
   });
+</script>
+
+<script>
+document.querySelectorAll(".view-more-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const card = btn.closest(".testimonial-card");
+
+    card.classList.toggle("expanded");
+
+    if (card.classList.contains("expanded")) {
+      btn.textContent = "View less";
+    } else {
+      btn.textContent = "View more";
+    }
+  });
+});
 </script>
 
 </body>

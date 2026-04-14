@@ -549,9 +549,9 @@ padding: 80px 20px 50px 20px;
 /* Testimonials Section */
 
 .testimonials-section {
-    padding: 100px 20px;   /* more vertical space */
+    padding: 100px 20px;
     text-align: center;
-    background: #f7f9fb; /* soft contrast from gallery sections */
+    background: #f7f9fb;
 }
 
 .section-title {
@@ -560,45 +560,74 @@ padding: 80px 20px 50px 20px;
     color: #1a1a1a;
 }
 
+/* 🔄 CAROUSEL CONTAINER (UPDATED) */
 .testimonials-container {
     display: flex;
-    gap: 40px;              /* more space between cards */
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1200px;   /* allows wider layout */
+    gap: 40px;
+    max-width: 1200px;
     margin: 0 auto;
+
+    overflow-x: auto;          /* enables horizontal scroll */
+    flex-wrap: nowrap;         /* forces one row */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    padding: 20px 10px;
 }
 
+/* 🧱 CARD (UPDATED FOR CAROUSEL + EQUAL HEIGHT) */
 .testimonial-card {
     border-radius: 16px;
     padding: 25px;
     width: 280px;
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 15px;
+    justify-content: space-between;
+
     background: transparent;
-    min-height: 280px;
+
+    min-height: 320px;         /* more consistent equal height */
+    flex: 0 0 auto;            /* prevents shrinking */
+    scroll-snap-align: start;
+
+    transition: transform 0.3s ease;
 }
 
+/* TEXT */
 .testimonial-text {
     font-size: 0.9rem;
     color: #333;
     line-height: 1.7;
     margin-bottom: 15px;
-    overflow: visible;
+
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; /* default collapsed state */
 }
 
+/* EXPANDED STATE (for JS toggle) */
+.testimonial-card.expanded .testimonial-text {
+    -webkit-line-clamp: unset;
+}
+
+/* NAME */
 .testimonial-name {
     font-weight: 600;
     color: #dfb952;
 }
 
+/* HOVER EFFECT (fixed so it doesn't fight layout) */
 .testimonial-card:hover {
     transform: translateY(-5px);
-    transition: 0.3s ease;
 }
 
+/* OPTIONAL: hide scrollbar for cleaner look */
+.testimonials-container::-webkit-scrollbar {
+    display: none;
+}
 /* Offers Section */
 .offers {
     text-align: center;
