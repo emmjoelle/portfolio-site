@@ -362,26 +362,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftBtn = document.querySelector(".carousel-btn.left");
     const rightBtn = document.querySelector(".carousel-btn.right");
 
-    if (!container || !leftBtn || !rightBtn) {
-        console.warn("Carousel elements not found — check class names.");
-        return;
+    const card = document.querySelector(".testimonial-card");
+    const gap = 40;
+
+    function getScrollAmount() {
+        return card.offsetWidth + gap;
     }
 
-    const scrollAmount = 320 + 40;
+    function loopScroll(direction) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        const scrollAmount = getScrollAmount();
 
-    leftBtn.addEventListener("click", () => {
-        container.scrollBy({
-            left: -scrollAmount,
-            behavior: "smooth"
-        });
-    });
+        if (direction === "right") {
+            if (container.scrollLeft + scrollAmount >= maxScroll) {
+                // jump back to start
+                container.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            }
+        }
 
-    rightBtn.addEventListener("click", () => {
-        container.scrollBy({
-            left: scrollAmount,
-            behavior: "smooth"
-        });
-    });
+        if (direction === "left") {
+            if (container.scrollLeft - scrollAmount <= 0) {
+                // jump to end
+                container.scrollTo({ left: maxScroll, behavior: "smooth" });
+            } else {
+                container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            }
+        }
+    }
+
+    leftBtn.addEventListener("click", () => loopScroll("left"));
+    rightBtn.addEventListener("click", () => loopScroll("right"));
 
 });
 </script>
