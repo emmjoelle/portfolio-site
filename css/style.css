@@ -588,6 +588,9 @@ padding: 80px 20px 50px 20px;
     background: transparent;
 
     min-height: 320px;         /* more consistent equal height */
+    max-height: 320px;   /* 👈 prevents layout shift */
+    overflow: hidden;
+
     flex: 0 0 auto;            /* prevents shrinking */
     scroll-snap-align: start;
 
@@ -602,15 +605,15 @@ padding: 80px 20px 50px 20px;
     margin-bottom: 15px;
 
     overflow: hidden;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5; /* default collapsed state */
 }
 
 /* EXPANDED STATE (for JS toggle) */
+.testimonial-card.expanded {
+    overflow: hidden;
+}
 .testimonial-card.expanded .testimonial-text {
-    -webkit-line-clamp: unset;
+    overflow-y: auto;
+    max-height: 180px;
 }
 
 /* NAME */
@@ -628,6 +631,50 @@ padding: 80px 20px 50px 20px;
 .testimonials-container::-webkit-scrollbar {
     display: none;
 }
+
+.testimonials-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* arrows */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* left arrow */
+.carousel-btn.left {
+    left: -10px;
+}
+
+/* right arrow */
+.carousel-btn.right {
+    right: -10px;
+}
+
+/* optional hover */
+.carousel-btn:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+
 /* Offers Section */
 .offers {
     text-align: center;
