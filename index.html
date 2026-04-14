@@ -145,20 +145,14 @@
 
 
   <!----------------------------Testimonials---------------------------------->
-<div class="testimonials-wrapper">
-  <button class="carousel-btn left" aria-label="Scroll left">
-    ‹
-  </button>
-  <div class="testimonials-container">
-    <!-- your testimonial cards stay EXACTLY the same -->
-  </div>
-  <button class="carousel-btn right" aria-label="Scroll right">
-    ›
-  </button>
-</div>
 
   <section class="testimonials-section">
   <h2 class="section-title">What Clients Say</h2>
+
+  <div class="testimonials-wrapper">
+  <button class="carousel-btn left" aria-label="Scroll left">
+    ‹
+  </button>
 
   <div class="testimonials-container">
 
@@ -203,6 +197,12 @@
     </div>
 
   </div>
+
+    <button class="carousel-btn right" aria-label="Scroll right">
+    ›
+  </button>
+</div>
+
 </section>
 
 
@@ -356,24 +356,33 @@ document.querySelectorAll(".view-more-btn").forEach(btn => {
 </script>
 
 <script>
-const container = document.querySelector(".testimonials-container");
-const leftBtn = document.querySelector(".carousel-btn.left");
-const rightBtn = document.querySelector(".carousel-btn.right");
+document.addEventListener("DOMContentLoaded", () => {
 
-const scrollAmount = 320 + 40; // card width + gap
+    const container = document.querySelector(".testimonials-container");
+    const leftBtn = document.querySelector(".carousel-btn.left");
+    const rightBtn = document.querySelector(".carousel-btn.right");
 
-leftBtn.addEventListener("click", () => {
-    container.scrollBy({
-        left: -scrollAmount,
-        behavior: "smooth"
+    if (!container || !leftBtn || !rightBtn) {
+        console.warn("Carousel elements not found — check class names.");
+        return;
+    }
+
+    const scrollAmount = 320 + 40;
+
+    leftBtn.addEventListener("click", () => {
+        container.scrollBy({
+            left: -scrollAmount,
+            behavior: "smooth"
+        });
     });
-});
 
-rightBtn.addEventListener("click", () => {
-    container.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth"
+    rightBtn.addEventListener("click", () => {
+        container.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth"
+        });
     });
+
 });
 </script>
 
