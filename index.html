@@ -164,7 +164,7 @@
           </p>
         </div>
         <button class="view-more-btn">View more</button>
-        <p class="testimonial-name">— Tina Fay</p>
+        <p class="testimonial-name">— Tina F.</p>
       </div>
 
       <div class="testimonial-card">
@@ -362,61 +362,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftBtn = document.querySelector(".carousel-btn.left");
     const rightBtn = document.querySelector(".carousel-btn.right");
 
-    let cards = Array.from(document.querySelectorAll(".testimonial-card"));
+    if (!container || !leftBtn || !rightBtn) return;
 
-    const gap = 40;
-
-    function getCardWidth() {
-        return cards[0].getBoundingClientRect().width + gap;
+    function getScrollAmount() {
+        const card = document.querySelector(".testimonial-card");
+        const gap = 40; // must match your CSS gap
+        return card.offsetWidth + gap;
     }
 
-    // Clone first + last properly
-    const firstClone = cards[0].cloneNode(true);
-    const lastClone = cards[cards.length - 1].cloneNode(true);
-
-    container.appendChild(firstClone);
-    container.insertBefore(lastClone, cards[0]);
-
-    // refresh list AFTER cloning (IMPORTANT FIX)
-    cards = Array.from(document.querySelectorAll(".testimonial-card"));
-
-    let index = 1;
-    container.scrollLeft = getCardWidth() * index;
-
-    function moveRight() {
-        index++;
-        container.scrollTo({
-            left: getCardWidth() * index,
+    rightBtn.addEventListener("click", () => {
+        container.scrollBy({
+            left: getScrollAmount(),
             behavior: "smooth"
         });
+    });
 
-        // reset loop
-        if (index >= cards.length - 1) {
-            setTimeout(() => {
-                container.scrollLeft = getCardWidth();
-                index = 1;
-            }, 400);
-        }
-    }
-
-    function moveLeft() {
-        index--;
-        container.scrollTo({
-            left: getCardWidth() * index,
+    leftBtn.addEventListener("click", () => {
+        container.scrollBy({
+            left: -getScrollAmount(),
             behavior: "smooth"
         });
-
-        // reset loop
-        if (index <= 0) {
-            setTimeout(() => {
-                container.scrollLeft = getCardWidth() * (cards.length - 2);
-                index = cards.length - 2;
-            }, 400);
-        }
-    }
-
-    rightBtn.addEventListener("click", moveRight);
-    leftBtn.addEventListener("click", moveLeft);
+    });
 
 });
 </script>
