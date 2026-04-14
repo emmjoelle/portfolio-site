@@ -652,8 +652,7 @@ padding: 80px 20px 50px 20px;
     -webkit-overflow-scrolling: touch;
     padding: 20px 50px; /* IMPORTANT: space for arrows */
     scroll-behavior: smooth;
-    padding-left: 70px;
-    padding-right: 70px;    
+    padding: 20px 90px;   
 }
 
 /* ARROWS */
@@ -683,8 +682,8 @@ padding: 80px 20px 50px 20px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
-.carousel-btn.left { left: 10px; }
-.carousel-btn.right { right: 10px; }
+.carousel-btn.left { left: 15px; }
+.carousel-btn.right { right: 15px; }
 
 .carousel-btn:hover {
     transform: translateY(-50%) scale(1.05);
