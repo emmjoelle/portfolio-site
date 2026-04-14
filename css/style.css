@@ -718,7 +718,7 @@ padding: 80px 20px 50px 20px;
 }
 
 .view-more-btn {
-    background: #1e66ff;
+    background: #00203D;
     color: white;
 
     border: none;
@@ -736,7 +736,8 @@ padding: 80px 20px 50px 20px;
 }
 
 .view-more-btn:hover {
-    background: #0f4fe0;
+    background: #b6dbf1;
+    color: black
     transform: translateY(-1px);
 }
 
