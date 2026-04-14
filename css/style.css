@@ -646,15 +646,18 @@ padding: 80px 20px 50px 20px;
 .testimonials-container {
     display: flex;
     gap: 40px;
+
     overflow-x: auto;
     flex-wrap: nowrap;
+
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding: 20px 50px; /* IMPORTANT: space for arrows */
     scroll-behavior: smooth;
-    padding: 20px 90px;   
-}
 
+    padding: 20px 0; /* ❌ removed side padding (this was causing the issue) */
+    scroll-padding-left: 60px;  /* ✅ allows first card to fully show */
+    scroll-padding-right: 60px; /* ✅ allows last card to fully show */
+}
 /* ARROWS */
 .carousel-btn {
     position: absolute;
