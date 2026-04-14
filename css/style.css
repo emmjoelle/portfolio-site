@@ -560,19 +560,17 @@ padding: 80px 20px 50px 20px;
     color: #1a1a1a;
 }
 
-/* 🔄 CAROUSEL CONTAINER (UPDATED) */
 .testimonials-container {
     display: flex;
     gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
 
-    overflow-x: auto;          /* enables horizontal scroll */
-    flex-wrap: nowrap;         /* forces one row */
+    overflow-x: auto;
+    flex-wrap: nowrap;
+
+    scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
 
-    padding: 20px 10px;
+    padding: 20px 0;
 }
 
 /* 🧱 CARD (UPDATED FOR CAROUSEL + EQUAL HEIGHT) */
@@ -640,19 +638,7 @@ padding: 80px 20px 50px 20px;
 .testimonials-wrapper {
     position: relative;
     padding: 0 70px; /* creates safe zone for BOTH arrows */
-}
-
-.testimonials-container {
-    display: flex;
-    gap: 40px;
-
-    overflow-x: auto;
-    flex-wrap: nowrap;
-
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-
-    padding: 20px 0; /* keep this clean */
+    overflow: hidden; /* IMPORTANT: ensures fade stays visible inside bounds */
 }
 
 /* ARROWS */
@@ -698,13 +684,14 @@ padding: 80px 20px 50px 20px;
     content: "";
     position: absolute;
     top: 0;
+    bottom: 0;   /* IMPORTANT (not height: 100%) */
     width: 80px;
-    height: 100%;
-    z-index: 5;
+
+    z-index: 20; /* must be ABOVE container */
     pointer-events: none;
 }
 
-/* LEFT FADE */
+/* LEFT */
 .testimonials-wrapper::before {
     left: 0;
     background: linear-gradient(
@@ -714,7 +701,7 @@ padding: 80px 20px 50px 20px;
     );
 }
 
-/* RIGHT FADE */
+/* RIGHT */
 .testimonials-wrapper::after {
     right: 0;
     background: linear-gradient(
