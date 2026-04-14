@@ -652,6 +652,8 @@ padding: 80px 20px 50px 20px;
     -webkit-overflow-scrolling: touch;
     padding: 20px 50px; /* IMPORTANT: space for arrows */
     scroll-behavior: smooth;
+    padding-left: 70px;
+    padding-right: 70px;    
 }
 
 /* ARROWS */
