@@ -693,30 +693,35 @@ padding: 80px 20px 50px 20px;
     position: relative;
 }
 
-/* LEFT FADE */
-.testimonials-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: 100%;
-    background: linear-gradient(to right, #f7f9fb 60%, transparent);
-    z-index: 5;
-    pointer-events: none;
-}
-
-/* RIGHT FADE */
+.testimonials-wrapper::before,
 .testimonials-wrapper::after {
     content: "";
     position: absolute;
     top: 0;
-    right: 0;
     width: 80px;
     height: 100%;
-    background: linear-gradient(to left, #f7f9fb 60%, transparent);
     z-index: 5;
     pointer-events: none;
+}
+
+/* LEFT FADE */
+.testimonials-wrapper::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        #f7f9fb 60%,
+        transparent
+    );
+}
+
+/* RIGHT FADE */
+.testimonials-wrapper::after {
+    right: 0;
+    background: linear-gradient(
+        to left,
+        #f7f9fb 60%,
+        transparent
+    );
 }
 
 .view-more-btn {
