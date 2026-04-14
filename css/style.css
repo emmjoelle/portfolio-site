@@ -658,34 +658,30 @@ padding: 80px 20px 50px 20px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 999; /* 🔥 makes sure it’s on top */
+    z-index: 999;
 
-    background: white;
-    border: none;
-    width: 45px;
-    height: 45px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
-    cursor: pointer;
+
+    border: none;
+    background: #ffffff;
+    color: #1a1a1a;
+
+    font-size: 24px;
+    font-weight: bold;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 22px;
-    font-weight: bold;
+    cursor: pointer;
 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-    scroll-behavior: smooth;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
-.carousel-btn.left {
-    left: 5px;
-}
-
-.carousel-btn.right {
-    right: 5px;
-}
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
 
 .carousel-btn:hover {
     transform: translateY(-50%) scale(1.05);
@@ -693,8 +689,6 @@ padding: 80px 20px 50px 20px;
 
 .testimonials-wrapper {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* LEFT FADE */
@@ -724,23 +718,30 @@ padding: 80px 20px 50px 20px;
 }
 
 .view-more-btn {
-    background: none;
+    background: #1e66ff;
+    color: white;
+
     border: none;
+    border-radius: 8px;
 
+    padding: 8px 12px;
+    margin-top: 12px;
+
+    font-size: 0.85rem;
     font-weight: 600;
-    font-size: 0.9rem;
 
-    color: #dfb952;
     cursor: pointer;
 
-    padding: 0;
-    margin-top: 10px;
-
-    transition: opacity 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .view-more-btn:hover {
-    opacity: 0.7;
+    background: #0f4fe0;
+    transform: translateY(-1px);
+}
+
+.view-more-btn:active {
+    transform: scale(0.98);
 }
 
 /* Offers Section */

@@ -362,38 +362,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const leftBtn = document.querySelector(".carousel-btn.left");
     const rightBtn = document.querySelector(".carousel-btn.right");
 
-    const cards = document.querySelectorAll(".testimonial-card");
+    let cards = Array.from(document.querySelectorAll(".testimonial-card"));
 
-    const cardWidth = cards[0].offsetWidth + 40;
+    const gap = 40;
 
-    // Clone first + last cards
+    function getCardWidth() {
+        return cards[0].getBoundingClientRect().width + gap;
+    }
+
+    // Clone first + last properly
     const firstClone = cards[0].cloneNode(true);
     const lastClone = cards[cards.length - 1].cloneNode(true);
 
     container.appendChild(firstClone);
     container.insertBefore(lastClone, cards[0]);
 
-    // start in correct position (skip fake first item)
-    container.scrollLeft = cardWidth;
+    // refresh list AFTER cloning (IMPORTANT FIX)
+    cards = Array.from(document.querySelectorAll(".testimonial-card"));
+
+    let index = 1;
+    container.scrollLeft = getCardWidth() * index;
 
     function moveRight() {
-        container.scrollLeft += cardWidth;
+        index++;
+        container.scrollTo({
+            left: getCardWidth() * index,
+            behavior: "smooth"
+        });
 
-        setTimeout(() => {
-            if (container.scrollLeft >= container.scrollWidth - container.clientWidth - cardWidth) {
-                container.scrollLeft = cardWidth;
-            }
-        }, 300);
+        // reset loop
+        if (index >= cards.length - 1) {
+            setTimeout(() => {
+                container.scrollLeft = getCardWidth();
+                index = 1;
+            }, 400);
+        }
     }
 
     function moveLeft() {
-        container.scrollLeft -= cardWidth;
+        index--;
+        container.scrollTo({
+            left: getCardWidth() * index,
+            behavior: "smooth"
+        });
 
-        setTimeout(() => {
-            if (container.scrollLeft <= 0) {
-                container.scrollLeft = container.scrollWidth - (2 * cardWidth);
-            }
-        }, 300);
+        // reset loop
+        if (index <= 0) {
+            setTimeout(() => {
+                container.scrollLeft = getCardWidth() * (cards.length - 2);
+                index = cards.length - 2;
+            }, 400);
+        }
     }
 
     rightBtn.addEventListener("click", moveRight);
