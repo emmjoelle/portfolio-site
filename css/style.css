@@ -1446,6 +1446,7 @@ footer a:hover {
 /* ADDONS */
 .addons {
   padding: 70px 10%;
+  text-align: center;
 }
 
 .addon-grid {
@@ -1462,29 +1463,11 @@ footer a:hover {
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
-/* PROJECTS */
-.projects {
-  padding: 80px 10%;
+
+.custom {
   text-align: center;
 }
 
-.project-grid {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.project-card {
-  max-width: 400px;
-}
-
-.project-card img {
-  width: 100%;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
 /* PROCESS */
 .process {
   background: #f9f9f9;
@@ -1510,6 +1493,7 @@ footer a:hover {
 /* FAQ */
 .faq {
   padding: 80px 10%;
+  text-align: center;
 }
 
 .faq-item {
@@ -1547,7 +1531,7 @@ footer a:hover {
   display: inline-block;
   background: #00203D;
   color: white;
-  padding: 12px 22px;
+  padding: 30px 50px;
   border-radius: 25px;
   text-decoration: none;
   margin-top: 15px;
