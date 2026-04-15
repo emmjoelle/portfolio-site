@@ -1466,6 +1466,7 @@ footer a:hover {
 
 .custom {
   text-align: center;
+  padding: 30px;
 }
 
 /* PROCESS */
@@ -1531,7 +1532,7 @@ footer a:hover {
   display: inline-block;
   background: #00203D;
   color: white;
-  padding: 30px 50px;
+  padding: 12px 22px;
   border-radius: 25px;
   text-decoration: none;
   margin-top: 15px;
