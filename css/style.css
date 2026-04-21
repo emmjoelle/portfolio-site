@@ -1426,7 +1426,7 @@ footer a:hover {
 }
 
 .custom h2 {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .custom p {
@@ -1440,6 +1440,10 @@ footer a:hover {
   text-align: center;
 }
 
+.process h2 {
+  margin-bottom: 50px;
+}
+
 .steps {
   display: flex;
   justify-content: space-between;
@@ -1449,7 +1453,7 @@ footer a:hover {
 
 .steps p {
 margin-top: 30px;
-  font-size: 1rem;
+  font-size: .8rem;
 }
 
 .steps div {
