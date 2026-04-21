@@ -789,7 +789,7 @@ padding: 80px 20px 50px 20px;
 .offers-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    background-color: #b6dbf1;
+    background-color: #dbe9f2;
 }
 
 .offers-card h3 {
