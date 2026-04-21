@@ -1456,28 +1456,17 @@ footer a:hover {
   text-align: center;
 }
 
+.faq h2 {
+  margin-bottom: 40px;
+}
+
 .faq-item {
   background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 30px;
+  border-radius: 15px;
   margin-bottom: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* WHY */
-.why {
-  padding: 80px 10%;
-  text-align: center;
-}
-
-.why ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-.why li {
-  margin-bottom: 10px;
+  max-width: 50%;
 }
 
 /* CTA */
