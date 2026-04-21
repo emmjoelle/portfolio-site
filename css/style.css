@@ -1442,17 +1442,41 @@ footer a:hover {
 
 .steps {
   display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-  margin-top: 40px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .steps div {
-  flex: 1 1 180px;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  position: relative;
+  text-align: center;
+  flex: 1;
+}
+
+/* Arrow between steps */
+.steps div:not(:last-child)::after {
+  content: "➜";
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #00203D;
+}
+
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+  }
+
+  .steps div:not(:last-child)::after {
+    content: "↓";
+    right: auto;
+    top: auto;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* FAQ */
