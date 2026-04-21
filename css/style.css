@@ -1396,7 +1396,7 @@ footer a:hover {
 
 /* ADDONS */
 .addons {
-  padding: 70px 10%;
+  padding: 30px 10%;
   text-align: center;
 }
 
@@ -1468,6 +1468,7 @@ footer a:hover {
   margin-bottom: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   max-width: 50%;
+  justify-content: center;
 }
 
 /* CTA */
