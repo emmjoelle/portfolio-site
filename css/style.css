@@ -1409,10 +1409,15 @@ footer a:hover {
 
 .addon-grid div {
   background: #ffffff;
-  padding: 15px;
+  padding: 20px;
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .custom {
