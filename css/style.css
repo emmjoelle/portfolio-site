@@ -1469,6 +1469,14 @@ footer a:hover {
   padding: 30px;
 }
 
+.custom h2 {
+    margin-bottom: 20px;
+}
+
+.custom p {
+    margin-bottom: 20px;
+}
+
 /* PROCESS */
 .process {
   background: #f9f9f9;
