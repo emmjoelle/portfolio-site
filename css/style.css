@@ -1385,6 +1385,15 @@ footer a:hover {
   text-align: left;
 }
 
+/* PACKAGES */
+.packages {
+  padding: 100px 10%;
+  background: #f4f7fb;
+  text-align: center;
+  max-width: 70%;
+}
+
+
 /* ADDONS */
 .addons {
   padding: 70px 10%;
