@@ -157,7 +157,6 @@ function openModal(item) {
 function closeModal(){
   const modal = document.getElementById("modal");
   modal.setAttribute("aria-hidden", "true");
-  document.getElementById("modalContent").innerHTML = "";
 }
 
 function capitalize(str){
@@ -234,12 +233,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const galleryKey = galleryItem.getAttribute("data-gallery");
       const id = galleryItem.getAttribute("data-id");
       item = galleries[galleryKey]?.find(x => x.id === id);
-      if (item) item.img = item.img || item.thumb;
+      if (item && !item.images) {
+        item.img = item.img || item.thumb;
+      }
     } else if (projectCard) {
       const id = projectCard.getAttribute("data-id");
       item = portfolio.find(x => x.id === id) || studio.find(x => x.id === id);
     }
-
     if (item) openModal(item);
   });
 
@@ -359,22 +359,6 @@ dropdownToggles.forEach(btn => {
 
 });
 
-// ==============================
-// UNIVERSAL ACCESSIBLE MODAL (Featured + Sketchbook)
-// ==============================
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("modal");
-  const modalContent = document.getElementById("modalContent");
-  const modalClose = document.getElementById("modalClose");
-  let lastFocusedElement = null;
-
-  // Make all clickable gallery and featured items keyboard-focusable
-  const triggers = document.querySelectorAll(".featured-trigger, .gallery-item");
-  triggers.forEach(trigger => {
-    trigger.setAttribute("tabindex", "0");
-    trigger.setAttribute("role", "button");
-  });
-
   // --- OPEN MODAL ---
   function openModal(trigger) {
     lastFocusedElement = document.activeElement;
@@ -477,12 +461,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close modal with X, Escape, or outside click
   modalClose.addEventListener("click", closeModal);
   modal.addEventListener("click", e => {
-    if (!e.target.closest(".modal-content") && e.target !== modalClose) closeModal();
+    if (!e.target.closest("#modalContent") && e.target !== modalClose) closeModal();
   });
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
   });
-});
 
 window.addEventListener("scroll", function() {
     var nav = document.querySelector("nav");
