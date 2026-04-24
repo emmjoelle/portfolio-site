@@ -1,5 +1,3 @@
-console.log("JS LOADED");
-// ===== Data Sets =====
 document.addEventListener("DOMContentLoaded", () => {
 // Featured items
 const featured = [
@@ -210,19 +208,22 @@ function closeModal() {
 }
 
 
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
 // ===================== SLIDESHOW CONTROLS =====================
-document.getElementById("prevBtn").addEventListener("click", () => {
+
+document.getElementById("prevBtn")?.addEventListener("click", () => {
   if (!currentImages.length) return;
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
   updateImage();
 });
 
-document.getElementById("nextBtn").addEventListener("click", () => {
+document.getElementById("nextBtn")?.addEventListener("click", () => {
   if (!currentImages.length) return;
   currentIndex = (currentIndex + 1) % currentImages.length;
   updateImage();
 });
-
 
 // ===================== MODAL EVENTS =====================
 modalClose.addEventListener("click", closeModal);

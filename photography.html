@@ -148,7 +148,7 @@
 </script>
 
 <!-- Global Modal -->
-<<div id="modal" class="modal" aria-hidden="true">
+<div id="modal" class="modal" aria-hidden="true">
 
   <div id="modalContent">
 
@@ -156,7 +156,16 @@
 
     <h2 id="modalTitle"></h2>
 
-    <img id="modalMainImage" />
+    <!-- 🔥 SLIDESHOW AREA -->
+    <div class="modal-image-wrapper">
+
+      <button id="prevBtn" aria-label="Previous image">‹</button>
+
+      <img id="modalMainImage" />
+
+      <button id="nextBtn" aria-label="Next image">›</button>
+
+    </div>
 
     <div id="modalThumbnails"></div>
 

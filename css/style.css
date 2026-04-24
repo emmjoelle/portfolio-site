@@ -1126,6 +1126,13 @@ section.visible {
     padding: 0 10px;
 }
 
+.modal-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 /* Close Button */
 #closeFeatured {
     position: absolute;
