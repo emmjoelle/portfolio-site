@@ -100,125 +100,86 @@ const galleries = {
   ]
 };
 
-// ===== Utilities =====
+// ===================== STATE =====================
 let cart = [];
-
-function escapeHtml(str){
-  if (!str) return "";
-  return String(str).replace(/[&<>"'`]/g, function(m){ 
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[m]; 
-  });
-}
-
-function cardForProject(p){
-  const card = document.createElement("article");
-  card.className = "project-card";
-  card.setAttribute("data-id", p.id);
-  card.innerHTML = `<div class="thumb">${escapeHtml(p.title)}</div>
-                    <h4>${escapeHtml(p.title)}</h4>
-                    <div class="muted">${escapeHtml(p.excerpt)}</div>`;
-  return card;
-}
 
 let currentImages = [];
 let currentIndex = 0;
 
+
+// ===================== MODAL ELEMENTS =====================
+const modal = document.getElementById("modal");
+const modalClose = document.getElementById("modalClose");
+const mainImg = document.getElementById("modalMainImage");
+const thumbs = document.getElementById("modalThumbnails");
+const titleEl = document.getElementById("modalTitle");
+const textEl = document.getElementById("modalText");
+const modalContent = document.getElementById("modalContent");
+
+
+// ===================== UTILS =====================
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str).replace(/[&<>"'`]/g, m => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+    "`": "&#96;"
+  }[m]));
+}
+
+
+// ===================== FIND ITEM =====================
+function getItemFromElement(el) {
+  const galleryKey = el.getAttribute("data-gallery");
+  const id = el.getAttribute("data-id");
+  return galleries?.[galleryKey]?.find(x => x.id === id);
+}
+
+
+// ===================== MODAL OPEN =====================
 function openModal(item) {
-  const modal = document.getElementById("modal");
-  const mainImg = document.getElementById("modalMainImage");
-  const thumbs = document.getElementById("modalThumbnails");
-  const title = document.getElementById("modalTitle");
-  const text = document.getElementById("modalText");
+  if (!item) return;
 
-  // Build image array
-  currentImages = item.images?.length
-    ? item.images
-    : (item.img ? [item.img] : []);
+  currentImages =
+    item.images?.length ? item.images :
+    item.img ? [item.img] : [];
 
-  if (!currentImages.length) return; // prevent empty modal
+  if (!currentImages.length) return;
 
   currentIndex = 0;
 
-  // Set text
-  title.textContent = item.title || "";
-  text.textContent = item.excerpt || item.content || "";
+  titleEl.textContent = item.title || "";
+  textEl.textContent = item.excerpt || item.content || "";
 
-  // Update main image
-  function updateImage() {
-    mainImg.src = currentImages[currentIndex];
-    mainImg.alt = item.alt || "";
-
-    document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
-      img.classList.toggle("active", i === currentIndex);
-    });
-  }
-
-  // Build thumbnails
   thumbs.innerHTML = "";
-  currentImages.forEach((src, index) => {
+
+  currentImages.forEach((src, i) => {
     const img = document.createElement("img");
     img.src = src;
+    img.alt = item.alt || "";
 
     img.addEventListener("click", () => {
-      currentIndex = index;
+      currentIndex = i;
       updateImage();
     });
 
     thumbs.appendChild(img);
   });
 
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+
+  attachFocusTrap();
   updateImage();
-
-  modal.setAttribute("aria-hidden", "false");
 }
 
-  // Open modal
-  modal.setAttribute("aria-hidden", "false");
 
-  // Set text content safely
-  title.textContent = item.title || item.name || "";
-  text.textContent = item.excerpt || item.desc || item.content || "";
-
-  // Clear previous images
-  gallery.innerHTML = "";
-
-  // Handle multiple images (collections)
-  if (item.images && item.images.length > 0) {
-    item.images.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = item.alt || "";
-      gallery.appendChild(img);
-    });
-  } 
-  // Fallback for single image
-  else if (item.img) {
-    const img = document.createElement("img");
-    img.src = item.img;
-    img.alt = item.alt || "";
-    gallery.appendChild(img);
-  }
-
-function closeModal(){
-  const modal = document.getElementById("modal");
-  modal.setAttribute("aria-hidden", "true");
-}
-
-document.getElementById("prevBtn").addEventListener("click", () => {
-  if (!currentImages.length) return;
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  updateMainImage();
-});
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  if (!currentImages.length) return;
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  updateMainImage();
-});
-
-function updateMainImage() {
-  const mainImg = document.getElementById("modalMainImage");
-
+// ===================== IMAGE UPDATE =====================
+function updateImage() {
   mainImg.src = currentImages[currentIndex];
 
   document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
@@ -226,366 +187,191 @@ function updateMainImage() {
   });
 }
 
-function capitalize(str){
-  return str.charAt(0).toUpperCase() + str.slice(1);
+
+// ===================== MODAL CLOSE =====================
+function closeModal() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "auto";
+
+  detachFocusTrap();
 }
 
-function addToCart(item){
-  cart.push(item);
+
+// ===================== SLIDESHOW CONTROLS =====================
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (!currentImages.length) return;
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateImage();
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (!currentImages.length) return;
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateImage();
+});
+
+
+// ===================== MODAL EVENTS =====================
+modalClose.addEventListener("click", closeModal);
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (!modal.classList.contains("open")) return;
+
+  if (e.key === "Escape") closeModal();
+  if (e.key === "ArrowLeft") document.getElementById("prevBtn").click();
+  if (e.key === "ArrowRight") document.getElementById("nextBtn").click();
+});
+
+
+// ===================== GALLERY CLICK (UNIFIED) =====================
+document.addEventListener("click", (e) => {
+  const itemEl = e.target.closest(".gallery-item");
+  if (!itemEl) return;
+
+  const item = getItemFromElement(itemEl);
+  openModal(item);
+});
+
+
+// ===================== FOCUS TRAP =====================
+function handleTabKey(e) {
+  if (e.key !== "Tab") return;
+
+  const focusable = modalContent.querySelectorAll(
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+  );
+
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function attachFocusTrap() {
+  document.addEventListener("keydown", handleTabKey);
+}
+
+function detachFocusTrap() {
+  document.removeEventListener("keydown", handleTabKey);
+}
+
+
+// ===================== CART =====================
+function renderCart() {
+  // placeholder safe render
+  const cartCount = document.getElementById("cartCount");
+  if (cartCount) cartCount.textContent = cart.length;
+}
+
+document.getElementById("cartToggle")?.addEventListener("click", () => {
+  const drawer = document.getElementById("cartDrawer");
+  if (!drawer) return;
+
+  const isHidden = drawer.getAttribute("aria-hidden") === "true";
+  drawer.setAttribute("aria-hidden", String(!isHidden));
+
+  document.getElementById("cartToggle").setAttribute("aria-expanded", String(isHidden));
+});
+
+document.getElementById("clearCart")?.addEventListener("click", () => {
+  cart = [];
   renderCart();
-  document.getElementById("cartCount").textContent = cart.length;
-}
+});
 
-function renderCart(){
-  const container = document.getElementById("cartItems");
-  if (!cart.length) {
-    container.innerHTML = "<div>No items</div>";
-    document.getElementById("cartCount").textContent = "0";
-    return;
-  }
-  container.innerHTML = "";
-  cart.forEach(it => {
-    const row = document.createElement("div");
-    row.style.display="flex";
-    row.style.justifyContent="space-between";
-    row.style.padding="6px 0";
-    row.innerHTML = `<div>${escapeHtml(it.name)} <small style="color:#666">x1</small></div><div>$${it.price}</div>`;
-    container.appendChild(row);
-  });
-  document.getElementById("cartCount").textContent = cart.length;
-}
+document.getElementById("checkoutBtn")?.addEventListener("click", () => {
+  alert("Checkout demo — integrate payment system here.");
+});
 
-// ===== DOMContentLoaded =====
-document.addEventListener("DOMContentLoaded", () => {
 
-  // --- Featured ---
-  const featuredGrid = document.getElementById("featuredGrid");
-  if (featuredGrid) {
-    featured.forEach(item => {
-      const el = document.createElement("article");
-      el.className = "feature-card";
-      el.innerHTML = `<h4>${escapeHtml(item.title)}</h4><p class="muted">${escapeHtml(item.excerpt)}</p>
-                      <div class="more"><button class="small-btn" data-id="${item.id}">More</button></div>`;
-      featuredGrid.appendChild(el);
-    });
-  }
+// ===================== CONTACT FORM =====================
+const contactForm = document.getElementById("contactForm");
 
-  // --- Galleries ---
-  Object.keys(galleries).forEach(key => {
-    const container = document.getElementById(`gallery${key}`);
-    if (!container) return;
+if (contactForm) {
+  contactForm.addEventListener("submit", e => {
+    e.preventDefault();
 
-    galleries[key].forEach(item => {
-      const el = document.createElement("div");
-      el.className = "gallery-item";
-      el.setAttribute("data-gallery", key);
-      el.setAttribute("data-id", item.id);
-      el.innerHTML = `<img src="${item.thumb}" alt="${item.title}"><p>${item.title}</p>`;
-      container.appendChild(el);
-    });
-  });
+    const name = document.getElementById("contactName")?.value.trim();
+    const email = document.getElementById("contactEmail")?.value.trim();
+    const message = document.getElementById("contactMessage")?.value.trim();
 
-  // --- Modal Click Handler ---
-  document.body.addEventListener("click", e => {
-    const btn = e.target.closest("button[data-id]");
-    const galleryItem = e.target.closest(".gallery-item");
-    const projectCard = e.target.closest(".project-card");
-
-    let item = null;
-
-    if (btn) {
-      const id = btn.getAttribute("data-id");
-      item = featured.find(x => x.id === id) || portfolio.find(x => x.id === id) || studio.find(x => x.id === id) || shopItems.find(x => x.id === id);
-    } else if (galleryItem) {
-      const galleryKey = galleryItem.getAttribute("data-gallery");
-      const id = galleryItem.getAttribute("data-id");
-      item = galleries[galleryKey]?.find(x => x.id === id);
-      if (item && !item.images) {
-        item.img = item.img || item.thumb;
-      }
-    } else if (projectCard) {
-      const id = projectCard.getAttribute("data-id");
-      item = portfolio.find(x => x.id === id) || studio.find(x => x.id === id);
+    if (!email || !message) {
+      alert("Please include your email and a message.");
+      return;
     }
-    if (item) openModal(item);
+
+    alert(`Thanks ${name || "friend"} — your message was received.`);
+    contactForm.reset();
   });
+}
 
-// --- Featured Modal Popup (uses existing modal) ---
-const modal = document.getElementById("featuredModal");
 
-if (modal) {
-  // Handle image clicks in the Featured section
-  document.querySelectorAll(".card.featured img").forEach(img => {
-    img.addEventListener("click", e => {
-      e.stopPropagation();
-      const card = img.closest(".card.featured");
-      const projectId = card.getAttribute("data-id");
-      const project = featured.find(p => p.id === projectId);
-      if (project) {
-        openModal({
-          title: project.title,
-          img: project.img,
-          excerpt: project.excerpt,
-          content: project.content
-        });
-      }
-    });
-  });
+// ===================== SECTION FADE-IN =====================
+const sections = document.querySelectorAll("section");
 
-  // Close modal when clicking the X
-  const closeBtn = document.getElementById("modalClose");
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
-    });
-  }
-
-  // Close modal when clicking outside modal content
-  window.addEventListener("click", event => {
-    const modalContent = modal.querySelector(".modal-content");
-    if (event.target === modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto"; // re-enable scrolling
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
     }
   });
-}
+}, { threshold: 0.2 });
 
-  // --- Cart Actions ---
-  document.getElementById("cartToggle")?.addEventListener("click", () => {
-    const drawer = document.getElementById("cartDrawer");
-    const hidden = drawer.getAttribute("aria-hidden") === "true";
-    drawer.setAttribute("aria-hidden", !hidden);
-    document.getElementById("cartToggle").setAttribute("aria-expanded", hidden);
-  });
+sections.forEach(sec => observer.observe(sec));
 
-  document.getElementById("clearCart")?.addEventListener("click", () => {
-    cart = [];
-    renderCart();
-  });
 
-  document.getElementById("checkoutBtn")?.addEventListener("click", () => {
-    alert("Checkout demo — integrate your payment provider here.");
-  });
+// ===================== DROPDOWNS =====================
+document.querySelectorAll(".dropdown-toggle").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const parent = btn.closest(".dropdown");
+    const isActive = parent.classList.toggle("active");
 
-  // --- Contact Form ---
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", e => {
-      e.preventDefault();
-      const name = document.getElementById("contactName").value.trim();
-      const email = document.getElementById("contactEmail").value.trim();
-      const message = document.getElementById("contactMessage").value.trim();
-      if (!email || !message) {
-        alert("Please include your email and a message.");
-        return;
-      }
-      alert(`Thanks ${name || "friend"} — your message was received.`);
-      contactForm.reset();
-    });
-  }
+    btn.setAttribute("aria-expanded", isActive);
 
-  // --- Fade-in Animation ---
-  const sections = document.querySelectorAll("section");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.2 });
-
-  sections.forEach(sec => observer.observe(sec));
-
-// --- Dropdown Accessibility Script (button version) ---
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-dropdownToggles.forEach(btn => {
-  btn.addEventListener('click', e => {
-    const parent = btn.closest('.dropdown');
-    const isActive = parent.classList.toggle('active');
-    btn.setAttribute('aria-expanded', isActive);
-
-    // Close other dropdowns
-    document.querySelectorAll('.dropdown').forEach(other => {
+    document.querySelectorAll(".dropdown").forEach(other => {
       if (other !== parent) {
-        other.classList.remove('active');
-        other.querySelector('.dropdown-toggle').setAttribute('aria-expanded', false);
+        other.classList.remove("active");
+        other.querySelector(".dropdown-toggle")
+          .setAttribute("aria-expanded", "false");
       }
     });
   });
 
-  // Keyboard accessibility (Enter/Space)
-  btn.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
+  btn.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       btn.click();
     }
   });
 });
 
-});
 
-  // --- OPEN MODAL ---
-  function openModal(trigger) {
-    lastFocusedElement = document.activeElement;
+// ===================== NAV SCROLL =====================
+let lastScroll = 0;
 
-    const galleryKey = trigger.getAttribute("data-gallery");
-    const id = trigger.getAttribute("data-id");
-    let item = null;
+window.addEventListener("scroll", () => {
+  const nav = document.querySelector("nav");
+  if (!nav) return;
 
-    // ✅ Find item (gallery or featured)
-    if (galleryKey && galleries[galleryKey]) {
-      item = galleries[galleryKey].find(x => x.id === id);
-    } else if (trigger.classList.contains("featured-trigger")) {
-      item = {
-        title: trigger.dataset.title,
-        excerpt: trigger.dataset.excerpt,
-        img: trigger.dataset.img,
-        alt: trigger.dataset.alt,
-        content: trigger.dataset.content
-      };
-    }
+  const y = window.scrollY;
 
-    if (!item) return;
-
-    // ✅ FIX: Prioritize item.alt (from JS dataset), not the HTML fallback
-    const alt = (item && item.alt) || trigger.dataset.alt || item.title || "Artwork image";
-
-    // Build modal content (full details)
-    modalContent.innerHTML = `
-      <div class="modal-body">
-        ${item.img ? `<img src="${item.img}" alt="${alt}" style="max-width:100%; height:auto;">` : ""}
-        ${item.title ? `<h2 id="modalTitle">${item.title}</h2>` : ""}
-        ${item.excerpt ? `<p class="excerpt">${item.excerpt}</p>` : ""}
-        ${item.content ? `<p class="description">${item.content}</p>` : ""}
-      </div>
-    `;
-
-    // Show modal
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    modal.scrollTop = 0;
-    modalClose.focus();
-
-    trapFocus(modal);
+  if (y > 50 && y > lastScroll) {
+    nav.classList.add("scrolled");
+  } else if (y <= 50) {
+    nav.classList.remove("scrolled");
   }
 
-  // modal images arrow functionality
-document.getElementById("prevBtn").addEventListener("click", () => {
-  if (!currentImages.length) return;
-  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-  document.getElementById("modalMainImage").src = currentImages[currentIndex];
-  updateThumbs();
+  lastScroll = y;
 });
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-  if (!currentImages.length) return;
-  currentIndex = (currentIndex + 1) % currentImages.length;
-  document.getElementById("modalMainImage").src = currentImages[currentIndex];
-  updateThumbs();
-});
-
-function updateThumbs() {
-  document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
-    img.classList.toggle("active", i === currentIndex);
-  });
-}
-
-document.addEventListener("keydown", e => {
-  if (document.getElementById("modal").getAttribute("aria-hidden") === "true") return;
-
-  if (e.key === "ArrowRight") {
-    document.getElementById("nextBtn").click();
-  }
-  if (e.key === "ArrowLeft") {
-    document.getElementById("prevBtn").click();
-  }
-});
-
-
-  // --- CLOSE MODAL ---
-  function closeModal() {
-  document.getElementById("modal").setAttribute("aria-hidden", "true");
-}
-
-document.getElementById("modalClose").addEventListener("click", closeModal);
-
-// click outside content
-document.getElementById("modal").addEventListener("click", e => {
-  if (!e.target.closest("#modalContent")) {
-    closeModal();
-  }
-});
-
-// escape key
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeModal();
-});
-
-  // --- FOCUS TRAP ---
-  function trapFocus(container) {
-    const focusableSelectors =
-      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
-    const focusableEls = container.querySelectorAll(focusableSelectors);
-    const firstEl = focusableEls[0];
-    const lastEl = focusableEls[focusableEls.length - 1];
-
-    document.addEventListener("keydown", handleTabKey);
-
-    function handleTabKey(e) {
-      if (e.key !== "Tab") return;
-      if (e.shiftKey) {
-        if (document.activeElement === firstEl) {
-          e.preventDefault();
-          lastEl.focus();
-        }
-      } else {
-        if (document.activeElement === lastEl) {
-          e.preventDefault();
-          firstEl.focus();
-        }
-      }
-    }
-
-    // Make available to closeModal
-    window.handleTabKey = handleTabKey;
-  }
-
-  // --- EVENT LISTENERS ---
-  // Click / Enter / Space open modal
-  document.body.addEventListener("click", e => {
-    const trigger = e.target.closest(".featured-trigger, .gallery-item");
-    if (trigger) openModal(trigger);
-  });
-
-  document.body.addEventListener("keydown", e => {
-    if ((e.key === "Enter" || e.key === " ") && e.target.closest(".featured-trigger, .gallery-item")) {
-      e.preventDefault();
-      openModal(e.target.closest(".featured-trigger, .gallery-item"));
-    }
-  });
-
-  // Close modal with X, Escape, or outside click
-  modalClose.addEventListener("click", closeModal);
-  modal.addEventListener("click", e => {
-    if (!e.target.closest("#modalContent") && e.target !== modalClose) closeModal();
-  });
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
-  });
-
-window.addEventListener("scroll", function() {
-    var nav = document.querySelector("nav");
-    var body = document.body;
-
-    if (window.scrollY > 50) {
-        nav.classList.add("scrolled");
-        body.classList.add("scrolled");
-    } else {
-        nav.classList.remove("scrolled");
-        body.classList.remove("scrolled");
-    }
-});
-
