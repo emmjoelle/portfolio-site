@@ -149,8 +149,15 @@
 
 <!-- Global Modal -->
 <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
-  <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
-  <div id="modalContent"></div>
+  <div id="modalContent">
+    <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+    
+    <div id="modalGallery"></div>
+    
+    <!-- optional text content -->
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+  </div>
 </div>
 
 <script src="js/script.js" defer></script>

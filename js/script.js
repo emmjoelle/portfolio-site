@@ -32,7 +32,12 @@ const galleries = {
   ],
   Port: [
     { id: "po1", title: "Man's Best Friend", thumb: "images/daddog.JPG", img: "images/daddog.JPG", alt: "Man sitting on stone steps beside a golden retriever.", excerpt: "A moment of companionship captured in the stillness of autumn woods.", content: "This portrait depicts a man and his golden retriever resting on stone steps, surrounded by autumn leaves at Letchworth State Park. It's a quiet celebration of loyalty, peace, and shared time in nature." },
-    { id: "po2", title: "Winter Walk", thumb: "images/franzi.jpg", img: "images/franzi.jpg", alt: "Family walking along a snowy path in winter.", excerpt: "Family portrait capturing a candid moment during a winter outing.", content: "This family portrait was taken for the client's Christmas cards. The natural composition, with parents holding and carrying their children, conveys tenderness, love, and the fleeting beauty of shared moments in everyday life." },
+    { id: "po2", title: "Winter Walk", thumb: "images/franzi.jpg", 
+      images: [
+        "images/franzi.jpg",
+        "images/franzi2.jpg"
+      ], 
+        alt: "Family walking along a snowy path in winter.", excerpt: "Family portrait capturing a candid moment during a winter outing.", content: "This family portrait was taken for the client's Christmas cards. The natural composition, with parents holding and carrying their children, conveys tenderness, love, and the fleeting beauty of shared moments in everyday life." },
     { id: "po3", title: "Graduating Focus", thumb: "images/saragrad.jpg", img: "images/saragrad.jpg", alt: "Graduate in cap and gown reading a book in a library aisle.", excerpt: "A quiet celebration of accomplishment in the calm of a library.", content: "This portrait was taken as a part of a series of university graduation photos. The composition emphasizes intellect and introspection rather than ceremony, evoking calm pride. It's a portrait not just of graduation, but of continued curiosity- a reminder that learning never truly ends." }
    ],
   Street: [
@@ -115,16 +120,38 @@ function cardForProject(p){
   return card;
 }
 
-function openModal(item){
+function openModal(item) {
   const modal = document.getElementById("modal");
+  const gallery = document.getElementById("modalGallery");
+  const title = document.getElementById("modalTitle");
+  const text = document.getElementById("modalText");
+
+  // Open modal
   modal.setAttribute("aria-hidden", "false");
-  const content = document.getElementById("modalContent");
-  content.innerHTML = `<h2>${escapeHtml(item.title || item.name)}</h2>
-    <p class="muted">${escapeHtml(item.excerpt || item.desc || "")}</p>
-    <div style="margin-top:12px">${item.img ? `<img src="${item.img}" style="max-width:100%; margin-bottom:16px;">` : ""}${escapeHtml(item.content || "")}</div>
-    <div style="margin-top:16px">
-      ${ item.price ? `<strong>Price: $${item.price}</strong> <button class="add-btn" data-id="${item.id}">Add to cart</button>` : "" }
-    </div>`;
+
+  // Set text content safely
+  title.textContent = item.title || item.name || "";
+  text.textContent = item.excerpt || item.desc || item.content || "";
+
+  // Clear previous images
+  gallery.innerHTML = "";
+
+  // Handle multiple images (collections)
+  if (item.images && item.images.length > 0) {
+    item.images.forEach(src => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = item.alt || "";
+      gallery.appendChild(img);
+    });
+  } 
+  // Fallback for single image
+  else if (item.img) {
+    const img = document.createElement("img");
+    img.src = item.img;
+    img.alt = item.alt || "";
+    gallery.appendChild(img);
+  }
 }
 
 function closeModal(){
