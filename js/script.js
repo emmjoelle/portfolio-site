@@ -1,5 +1,6 @@
+console.log("JS LOADED");
 // ===== Data Sets =====
-
+document.addEventListener("DOMContentLoaded", () => {
 // Featured items
 const featured = [
   { id: "f1", title: "Held in Quiet, 2023", type: "portfolio", thumb: "images/boat couple.jpg", img: "images/boat couple.jpg", alt: "Black-and-white photo of a couple leaning together on a ferry.", content: "“Held in Quiet” captures an intimate pause amid motion — two figures leaning into stillness as the ferry drifts forward. The gentle placement of a hand conveys both tenderness and protection, blurring the boundary between affection and contemplation. Shot in black and white, the absence of color heightens the emotional tone, focusing attention on gesture, light, and atmosphere. This photograph reflects themes of connection, transience, and the quiet language of human touch — moments that speak not in words, but in weight and warmth." },
@@ -107,14 +108,25 @@ let currentImages = [];
 let currentIndex = 0;
 
 
-// ===================== MODAL ELEMENTS =====================
+// ===================== MODAL ELEMENTS (SAFE) =====================
+
 const modal = document.getElementById("modal");
-const modalClose = document.getElementById("modalClose");
-const mainImg = document.getElementById("modalMainImage");
-const thumbs = document.getElementById("modalThumbnails");
-const titleEl = document.getElementById("modalTitle");
-const textEl = document.getElementById("modalText");
 const modalContent = document.getElementById("modalContent");
+
+const mainImg = document.getElementById("modalMainImage");
+if (!mainImg) console.warn("Missing #modalMainImage");
+
+const thumbs = document.getElementById("modalThumbnails");
+if (!thumbs) console.warn("Missing #modalThumbnails");
+
+const titleEl = document.getElementById("modalTitle");
+if (!titleEl) console.warn("Missing #modalTitle");
+
+const textEl = document.getElementById("modalText");
+if (!textEl) console.warn("Missing #modalText");
+
+const modalClose = document.getElementById("modalClose");
+if (!modalClose) console.warn("Missing #modalClose");
 
 
 // ===================== UTILS =====================
@@ -374,4 +386,5 @@ window.addEventListener("scroll", () => {
   }
 
   lastScroll = y;
+});
 });
