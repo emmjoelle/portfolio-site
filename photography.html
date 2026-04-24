@@ -148,13 +148,18 @@
 </script>
 
 <!-- Global Modal -->
-<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+<div id="modal" class="modal" aria-hidden="true">
   <div id="modalContent">
-    <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
-    
-    <div id="modalGallery"></div>
-    
-    <!-- optional text content -->
+    <button id="modalClose">&times;</button>
+
+    <div class="slideshow">
+      <button id="prevBtn">&#10094;</button>
+      <img id="modalMainImage" src="" alt="">
+      <button id="nextBtn">&#10095;</button>
+    </div>
+
+    <div id="modalThumbnails"></div>
+
     <h2 id="modalTitle"></h2>
     <p id="modalText"></p>
   </div>

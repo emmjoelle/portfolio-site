@@ -120,11 +120,57 @@ function cardForProject(p){
   return card;
 }
 
+let currentImages = [];
+let currentIndex = 0;
+
 function openModal(item) {
   const modal = document.getElementById("modal");
-  const gallery = document.getElementById("modalGallery");
+  const mainImg = document.getElementById("modalMainImage");
+  const thumbs = document.getElementById("modalThumbnails");
   const title = document.getElementById("modalTitle");
   const text = document.getElementById("modalText");
+
+  // Build image array
+  currentImages = item.images?.length
+    ? item.images
+    : (item.img ? [item.img] : []);
+
+  if (!currentImages.length) return; // prevent empty modal
+
+  currentIndex = 0;
+
+  // Set text
+  title.textContent = item.title || "";
+  text.textContent = item.excerpt || item.content || "";
+
+  // Update main image
+  function updateImage() {
+    mainImg.src = currentImages[currentIndex];
+    mainImg.alt = item.alt || "";
+
+    document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
+      img.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  // Build thumbnails
+  thumbs.innerHTML = "";
+  currentImages.forEach((src, index) => {
+    const img = document.createElement("img");
+    img.src = src;
+
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      updateImage();
+    });
+
+    thumbs.appendChild(img);
+  });
+
+  updateImage();
+
+  modal.setAttribute("aria-hidden", "false");
+}
 
   // Open modal
   modal.setAttribute("aria-hidden", "false");
@@ -152,11 +198,32 @@ function openModal(item) {
     img.alt = item.alt || "";
     gallery.appendChild(img);
   }
-}
 
 function closeModal(){
   const modal = document.getElementById("modal");
   modal.setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (!currentImages.length) return;
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateMainImage();
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (!currentImages.length) return;
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  updateMainImage();
+});
+
+function updateMainImage() {
+  const mainImg = document.getElementById("modalMainImage");
+
+  mainImg.src = currentImages[currentIndex];
+
+  document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
+    img.classList.toggle("active", i === currentIndex);
+  });
 }
 
 function capitalize(str){
@@ -405,15 +472,57 @@ dropdownToggles.forEach(btn => {
     trapFocus(modal);
   }
 
+  // modal images arrow functionality
+document.getElementById("prevBtn").addEventListener("click", () => {
+  if (!currentImages.length) return;
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById("modalMainImage").src = currentImages[currentIndex];
+  updateThumbs();
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  if (!currentImages.length) return;
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  document.getElementById("modalMainImage").src = currentImages[currentIndex];
+  updateThumbs();
+});
+
+function updateThumbs() {
+  document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
+    img.classList.toggle("active", i === currentIndex);
+  });
+}
+
+document.addEventListener("keydown", e => {
+  if (document.getElementById("modal").getAttribute("aria-hidden") === "true") return;
+
+  if (e.key === "ArrowRight") {
+    document.getElementById("nextBtn").click();
+  }
+  if (e.key === "ArrowLeft") {
+    document.getElementById("prevBtn").click();
+  }
+});
+
+
   // --- CLOSE MODAL ---
   function closeModal() {
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    modalContent.innerHTML = "";
-    document.body.style.overflow = "auto";
-    if (lastFocusedElement) lastFocusedElement.focus();
-    document.removeEventListener("keydown", handleTabKey);
+  document.getElementById("modal").setAttribute("aria-hidden", "true");
+}
+
+document.getElementById("modalClose").addEventListener("click", closeModal);
+
+// click outside content
+document.getElementById("modal").addEventListener("click", e => {
+  if (!e.target.closest("#modalContent")) {
+    closeModal();
   }
+});
+
+// escape key
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
 
   // --- FOCUS TRAP ---
   function trapFocus(container) {
