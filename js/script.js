@@ -99,46 +99,48 @@ const galleries = {
   ]
 };
 
+document.addEventListener("DOMContentLoaded", () => {
+
 // ===================== STATE =====================
 let cart = [];
-
 let currentImages = [];
 let currentIndex = 0;
 
 
-// ===================== MODAL ELEMENTS (SAFE) =====================
+// ===================== GALLERY RENDER =====================
+function renderGalleries() {
+  Object.entries(galleries).forEach(([key, items]) => {
+    const container = document.getElementById(`gallery${key}`);
+    if (!container) return;
 
+    container.innerHTML = "";
+
+    items.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "gallery-item";
+      div.setAttribute("data-gallery", key);
+      div.setAttribute("data-id", item.id);
+
+      div.innerHTML = `
+        <img src="${item.thumb}" alt="${item.alt || ""}">
+        <p>${item.title || ""}</p>
+      `;
+
+      container.appendChild(div);
+    });
+  });
+}
+
+
+// ===================== MODAL ELEMENTS =====================
 const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modalContent");
 
 const mainImg = document.getElementById("modalMainImage");
-if (!mainImg) console.warn("Missing #modalMainImage");
-
 const thumbs = document.getElementById("modalThumbnails");
-if (!thumbs) console.warn("Missing #modalThumbnails");
-
 const titleEl = document.getElementById("modalTitle");
-if (!titleEl) console.warn("Missing #modalTitle");
-
 const textEl = document.getElementById("modalText");
-if (!textEl) console.warn("Missing #modalText");
-
 const modalClose = document.getElementById("modalClose");
-if (!modalClose) console.warn("Missing #modalClose");
-
-
-// ===================== UTILS =====================
-function escapeHtml(str) {
-  if (!str) return "";
-  return String(str).replace(/[&<>"'`]/g, m => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-    "`": "&#96;"
-  }[m]));
-}
 
 
 // ===================== FIND ITEM =====================
@@ -149,9 +151,21 @@ function getItemFromElement(el) {
 }
 
 
-// ===================== MODAL OPEN =====================
+// ===================== UPDATE IMAGE =====================
+function updateImage() {
+  if (!mainImg) return;
+
+  mainImg.src = currentImages[currentIndex];
+
+  document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
+    img.classList.toggle("active", i === currentIndex);
+  });
+}
+
+
+// ===================== OPEN MODAL =====================
 function openModal(item) {
-  if (!item) return;
+  if (!item || !modal) return;
 
   currentImages =
     item.images?.length ? item.images :
@@ -161,58 +175,45 @@ function openModal(item) {
 
   currentIndex = 0;
 
-  titleEl.textContent = item.title || "";
-  textEl.textContent = item.excerpt || item.content || "";
+  if (titleEl) titleEl.textContent = item.title || "";
+  if (textEl) textEl.textContent = item.excerpt || item.content || "";
 
-  thumbs.innerHTML = "";
+  if (thumbs) {
+    thumbs.innerHTML = "";
 
-  currentImages.forEach((src, i) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = item.alt || "";
+    currentImages.forEach((src, i) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = item.alt || "";
 
-    img.addEventListener("click", () => {
-      currentIndex = i;
-      updateImage();
+      img.addEventListener("click", () => {
+        currentIndex = i;
+        updateImage();
+      });
+
+      thumbs.appendChild(img);
     });
-
-    thumbs.appendChild(img);
-  });
+  }
 
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
 
-  attachFocusTrap();
   updateImage();
 }
 
 
-// ===================== IMAGE UPDATE =====================
-function updateImage() {
-  mainImg.src = currentImages[currentIndex];
-
-  document.querySelectorAll("#modalThumbnails img").forEach((img, i) => {
-    img.classList.toggle("active", i === currentIndex);
-  });
-}
-
-
-// ===================== MODAL CLOSE =====================
+// ===================== CLOSE MODAL =====================
 function closeModal() {
+  if (!modal) return;
+
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "auto";
-
-  detachFocusTrap();
 }
 
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-
 // ===================== SLIDESHOW CONTROLS =====================
-
 document.getElementById("prevBtn")?.addEventListener("click", () => {
   if (!currentImages.length) return;
   currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
@@ -225,29 +226,36 @@ document.getElementById("nextBtn")?.addEventListener("click", () => {
   updateImage();
 });
 
-// ===================== MODAL EVENTS =====================
-modalClose.addEventListener("click", closeModal);
 
-modal.addEventListener("click", (e) => {
+// ===================== MODAL EVENTS =====================
+modalClose?.addEventListener("click", closeModal);
+
+modal?.addEventListener("click", (e) => {
   if (e.target === modal) closeModal();
 });
 
 document.addEventListener("keydown", (e) => {
-  if (!modal.classList.contains("open")) return;
+  if (!modal?.classList.contains("open")) return;
 
   if (e.key === "Escape") closeModal();
-  if (e.key === "ArrowLeft") document.getElementById("prevBtn").click();
-  if (e.key === "ArrowRight") document.getElementById("nextBtn").click();
+  if (e.key === "ArrowLeft") document.getElementById("prevBtn")?.click();
+  if (e.key === "ArrowRight") document.getElementById("nextBtn")?.click();
 });
 
 
-// ===================== GALLERY CLICK (UNIFIED) =====================
+// ===================== GALLERY CLICK =====================
 document.addEventListener("click", (e) => {
   const itemEl = e.target.closest(".gallery-item");
   if (!itemEl) return;
 
   const item = getItemFromElement(itemEl);
   openModal(item);
+});
+
+
+// ===================== INIT =====================
+renderGalleries();
+
 });
 
 
