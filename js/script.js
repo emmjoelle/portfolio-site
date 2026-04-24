@@ -99,37 +99,38 @@ const galleries = {
   ]
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-
 // ===================== STATE =====================
 let cart = [];
 let currentImages = [];
 let currentIndex = 0;
 
 
-// ===================== GALLERY RENDER =====================
+// ===================== RENDER GALLERIES =====================
 function renderGalleries() {
   Object.entries(galleries).forEach(([key, items]) => {
-    const container = document.getElementById(`gallery${key}`);
+    const container = document.getElementById("gallery" + key);
     if (!container) return;
 
     container.innerHTML = "";
 
     items.forEach(item => {
       const div = document.createElement("div");
-      div.className = "gallery-item";
-      div.setAttribute("data-gallery", key);
+      div.classList.add("gallery-item");
+
       div.setAttribute("data-id", item.id);
+      div.setAttribute("data-gallery", key);
 
       div.innerHTML = `
         <img src="${item.thumb}" alt="${item.alt || ""}">
-        <p>${item.title || ""}</p>
+        <p>${item.title}</p>
       `;
 
       container.appendChild(div);
     });
   });
 }
+
+renderGalleries();
 
 
 // ===================== MODAL ELEMENTS =====================
@@ -250,12 +251,6 @@ document.addEventListener("click", (e) => {
 
   const item = getItemFromElement(itemEl);
   openModal(item);
-});
-
-
-// ===================== INIT =====================
-renderGalleries();
-
 });
 
 
