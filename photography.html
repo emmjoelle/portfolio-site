@@ -148,29 +148,15 @@
 </script>
 
 <!-- Global Modal -->
-<div id="modal" class="modal" aria-hidden="true">
-
+<div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
   <div id="modalContent">
-
-    <button id="modalClose">×</button>
-
+    <button id="modalClose" class="close" aria-label="Close modal">&times;</button>
+    
+    <div id="modalGallery"></div>
+    
+    <!-- optional text content -->
     <h2 id="modalTitle"></h2>
-
-    <!-- 🔥 SLIDESHOW AREA -->
-    <div class="modal-image-wrapper">
-
-      <button id="prevBtn" aria-label="Previous image">‹</button>
-
-      <img id="modalMainImage" />
-
-      <button id="nextBtn" aria-label="Next image">›</button>
-
-    </div>
-
-    <div id="modalThumbnails"></div>
-
     <p id="modalText"></p>
-
   </div>
 </div>
 
